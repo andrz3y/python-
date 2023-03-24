@@ -41,6 +41,9 @@ Unidecode is a library that can be used to translate Unicode characters to “ap
 ```
 
 
+<div style="page-break-after: always;"></div>
+
+--- 
 # decompile:
 
 ```bash
@@ -55,19 +58,16 @@ uncompyle6 -o . <what_they_dont_wants_U2c>
 
 <div style="page-break-after: always;"></div>
 
-# __ dunders == double underscores methods
+# __ dunders __ [double underscores methods]
 
+-  any identifier that starts and ends with two underscores (such as ```__name__, __init__, __str__```, etc.) is called a dunder (short for "double underscore") or magic method. 
+
+- There are many dunder methods but most commonly used: 
 
 ```python
-# There are many dunder methods but most commonly used: 
-# 
-# any identifier that starts and ends with two underscores (such as __name__, __init__, __str__, etc.) is called a dunder (short for "double underscore") or magic method. 
-#
-# These methods have special meaning in Python and are used to provide special behavior or functionality to classes and objects.  
-
 __init__: 
 # This is the constructor method that is called when an object of a class is created. 
-# It is used to initialize the objects attributes.
+# Used to initialize the objects attributes.
 
 __str__: 
 # This method returns a string representation of an object. 
@@ -140,9 +140,9 @@ In addition to the built-in vocabulary, Python also allows users to define their
 ## __bases __ 
 
  
-__bases__ property is a special attribute in Python that is used to access the tuple of base classes of a class. When you create a new class in Python, you can specify one or more base classes from which your new class inherits attributes and methods. The __bases__ attribute provides a way to access the tuple of base classes that your class inherits from.
+```__bases__``` property is a special attribute in Python that is used to access the tuple of base classes of a class. When you create a new class in Python, you can specify one or more base classes from which your new class inherits attributes and methods. The ```__bases__``` attribute provides a way to access the tuple of base classes that your class inherits from.
 
-Here's an example to illustrate how the __bases__ attribute works:
+Here's an example to illustrate how the ```__bases__``` attribute works:
 
 ```python 
 class Animal:
@@ -159,29 +159,35 @@ d.bark()   # Output: "Woof!"
 
 print(Dog.__bases__)  # Output: (<class '__main__.Animal'>,)
 
+# Two classes are defined: Animal and Dog. 
 
-# In this example, we define two classes, Animal and Dog. 
 # The Dog class inherits from the Animal class, which means that it automatically inherits the speak method from Animal
+
 # We then create an instance of Dog called d, and we can call both the speak and bark methods on it.
 
-# Finally, we use the __bases__ attribute to access the tuple of base classes of the Dog class, which in this case is (<class '__main__.Animal'>,). This tuple contains a single element, which is the Animal class, indicating that Dog inherits from Animal.
+# Using the __bases__ attribute to access the tuple of base classes of the Dog class, which in this case is (<class '__main__.Animal'>,). This tuple contains a single element, which is the Animal class, indicating that Dog inherits from Animal.
 ``` 
 
 
+<div style="page-break-after: always;"></div>
+
 ## global
 
-When used inside a function, the global keyword is used to indicate that a variable defined inside the function should be treated as a global variable, i.e., it should be **accessible from outside the function**. For example:
+When used inside a function, the global keyword is used to indicate that a variable defined inside the function should be treated as a global variable, i.e., it should be **accessible from outside the function**. 
+
+For example:
 
 ```python
 x = 10
 
 def my_func():
-    global x
+    global x  
     x = 20
     print(x)
 
 my_func()
-print(x)  # prints 20
+print(x)      # prints 20
+x             # prints 20
 ```
 
 ## assert: 
@@ -200,6 +206,9 @@ assert x > y, "x is not greater than y"
 assert type(my_list) == list, "parameter must be a type of list" 
 assert len(my_list), "input list must not be empty" 
 ```
+
+
+<div style="page-break-after: always;"></div>
 
 
 ## try: 
@@ -228,16 +237,19 @@ if x < 0:
 
  
 
- 
 
 
---- 
+<div style="page-break-after: always;"></div>
 
 ## yield
 
-In Python, **yield** is used in a function to create a generator object. A generator is a special type of iterator that allows you to iterate over a sequence of values without generating the entire sequence at once. Instead, the values are generated on-the-fly as you iterate over the generator.
+In Python, **yield** is used in a function to create a **generator object**. 
 
-When you use yield in a function, the function becomes a generator function. When the generator function is called, it returns a generator object that you can iterate over using a for loop or other iteration methods.
+A generator is a special type of iterator that allows you to iterate over a sequence of values without generating the entire sequence at once. Instead, the values are generated on-the-fly as you iterate over the generator.
+
+When you use yield in a function, the function becomes a generator function. 
+
+When the generator function is called, it returns a generator object that you can iterate over using a for loop or other iteration methods.
 
 Example: 
 ```python
@@ -256,14 +268,16 @@ for num in count_up_to(5):
 5
 # the count_up_to() function is a generator function that generates a sequence of integers from 1 to n. 
 # The yield keyword is used to return each integer one at a time, as the generator is iterated over. 
-# The for loop at the bottom of the code block iterates over the generator, printing each integer in the sequence as it is generated.
+# The for loop iterates over the generator, printing each integer in the sequence as it is generated.
 ```
 The main advantage of using a generator instead of a list is that generators are more memory-efficient. Because they generate the sequence on-the-fly, they don't need to store the entire sequence in memory at once. This makes them ideal for iterating over very large or infinite sequences of values.
 
 
 --- 
 
+<div style="page-break-after: always;"></div>
 
+--- 
 ## hasattr()
 
 **hasattr()** is a built-in Python function, not a method. It is used to check whether an object has an attribute with a given name.
@@ -324,16 +338,15 @@ Class3 has attribute y from Class2
 Class3 has attribute x from Class1
 ```
 
+<div style="page-break-after: always;"></div>
 
 --- 
-
-## chr() ord()
+# chr() ord()
 
 **chr()** and **ord()** are two built-in Python functions that are used for working with characters and their corresponding Unicode code points.
 
 chr() takes an integer representing a Unicode code point and returns the corresponding character. 
 
-For example:
 ```python 
 chr(65)  
 "A" 
@@ -341,10 +354,8 @@ chr(65)
 # chr() can also take a string representing an integer in the range 0-1114111 (which is the maximum Unicode code point) and returns the corresponding character.
 ``` 
 
-
 ord() takes a character and returns its corresponding Unicode code point as an integer. 
 
-For example: 
 ```python 
 ord('A') 
 65
@@ -367,11 +378,9 @@ chr(ord('A') + 1)
 
 
 
-
+<div style="page-break-after: always;"></div>
 
 --- 
-
-
 # subclasses  # superclasses 
 
 - **subclass** is a class that inherits properties and methods from a superclass. The subclass can add new properties or methods or override the inherited ones. 
