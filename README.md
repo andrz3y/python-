@@ -1,27 +1,146 @@
-#pythonGeneral    
-> update: 22/03
+# pythonGeneral    
 
-**ALL THE WAY INTO PYTHON**
+> learn & prepare for PCAP
 
-- I KNOW MASTERING PYTHON REQUIRES A LOT OF TIME, TEARS, FRUSTRATIONS
-  - mastering python requires a lot of dedication
-  - mastering python requires at least 1h daily on learning theory
-  - mastering python requires everyday reading others code
-  - mastering python requires everyday writing code
-  - mastering python requires learning from the best, like Andy, like Jose
-  - mastering python requires reverse engineering our VxRail Scripts and being able to improve them
-  - I am pragmatic programmer
-  - I think like computer:
-    -  https://www.rogerperkin.co.uk/programming/what-is-computational-thinking/
-    - https://www.cs.cmu.edu/afs/cs/usr/wing/www/publications/Wing06.pdf
+> every day learn, read, write and revrite code 
+
+--- 
+ 
+
+**python has dynamic typing**
+- meaning I can reassign variable to different data type later in code
+  - ```dogs = 2 <more code> dogs = ["franki", "jessie"]```
+
+**its easy for programmer because dont have to declare data type each time you declare something**
+  - it double edge sword because you can hit bugs for unexpected data types
+  - you can use build in type function **type()** to quickly check the type of any object
+  - *IN C++* if you declare *dogs* as integer + value you can not change that later in code
+
+--- 
+
+<div style="page-break-after: always;"></div>
+
+# ASCII vs UTF-8
+
+```yaml
+UTF-8 is an abbreviation for Unicode Transformation Format — 8 bits.
+
+The “8” here means 8-bit blocks are used to represent a character.
+UTF-8 is the most commonly used encoding format for Unicode characters.
+So, simply speaking, Unicode is a character set and UTF-8 is an encoding format.
+With a character set, a character is translated to a decimal number.
+
+
+ASCII is an abbreviation for American Standard Code for Information Interchange
+It is the first character set and character encoding standard for electronic communication.
+ASCII contains 128 characters which contain the lower and upper case English letters (a-zA-Z),
+the numbers from 0–9, and some special characters.
+ASCII is subset of UTF-8
+
+Unidecode is a library that can be used to translate Unicode characters to “approximate” ASCII counterparts. For example, Ä => , Å=> A and Ö=> O.
+```
+
+
+# decompile:
+
+```bash
+#install uncompile if not installed
+pip install uncompyle6
+
+uncompyle6 <what_they_dont_wants_U2c>   #std output
+uncompyle6 -o . <what_they_dont_wants_U2c>
+```
+
+--- 
+
+<div style="page-break-after: always;"></div>
+
+# __ dunders == double underscores methods
+
+
+```python
+# There are many dunder methods but most commonly used: 
+# 
+# any identifier that starts and ends with two underscores (such as __name__, __init__, __str__, etc.) is called a dunder (short for "double underscore") or magic method. 
+#
+# These methods have special meaning in Python and are used to provide special behavior or functionality to classes and objects.  
+
+__init__: 
+# This is the constructor method that is called when an object of a class is created. 
+# It is used to initialize the objects attributes.
+
+__str__: 
+# This method returns a string representation of an object. 
+# It is used when you call the str() function on an object or when the object is printed.
+
+__repr__: 
+# This method returns a string representation of an object that can be used to recreate the object. 
+# It is used when you call the repr() function on an object.
+
+__len__: 
+# This method returns the length of an object. It is used when you call the len() function on an object.
+
+__getitem__: 
+# This method is used to get an item from a sequence (such as a list or a tuple) or a mapping (such as a dictionary) using square bracket notation.
+
+__setitem__: 
+# This method is used to set an item in a sequence or a mapping using square bracket notation.
+
+__delitem__: 
+# This method is used to delete an item from a sequence or a mapping using square bracket notation.
+
+__call__: 
+# This method allows an object to be called like a function.
+
+__getattr__: 
+# This method is called when an attribute that does not exist is accessed on an object. 
+# It allows you to define custom behavior for accessing attributes.
+
+__setattr__: 
+# This method is called when an attribute is set on an object. 
+# It allows you to define custom behavior for setting attributes.
+```
 
 
 
 
 
-# bases 
+# Python lexis 
 
-The __bases__ property is a special attribute in Python that is used to access the tuple of base classes of a class. When you create a new class in Python, you can specify one or more base classes from which your new class inherits attributes and methods. The __bases__ attribute provides a way to access the tuple of base classes that your class inherits from.
+The lexicon or "lexis" of a programming language refers to its vocabulary, i.e., the set of keywords, identifiers, literals, and symbols that are used to write programs in that language.
+
+In Python, the lexicon includes keywords such as:
+- if, 
+- else, 
+- while, 
+- for, 
+- def, 
+- class, 
+- import, 
+- from, 
+- as, 
+
+As well as built-in functions such as: 
+- print(), 
+- input(), 
+- len(). 
+
+Python also has several built-in data types, including numbers, strings, lists, tuples, dictionaries, and sets.
+
+In addition to the built-in vocabulary, Python also allows users to define their own identifiers, such as variable names, function names, and class names. These user-defined identifiers become part of the lexicon of any program that uses them.
+
+
+--- 
+
+<div style="page-break-after: always;"></div>
+
+# KEYWORDS TO REMEMBER: 
+
+
+## __bases __ 
+
+ 
+__bases__ property is a special attribute in Python that is used to access the tuple of base classes of a class. When you create a new class in Python, you can specify one or more base classes from which your new class inherits attributes and methods. The __bases__ attribute provides a way to access the tuple of base classes that your class inherits from.
 
 Here's an example to illustrate how the __bases__ attribute works:
 
@@ -39,25 +158,89 @@ d.speak()  # Output: "I am an animal"
 d.bark()   # Output: "Woof!"
 
 print(Dog.__bases__)  # Output: (<class '__main__.Animal'>,)
+
+
+# In this example, we define two classes, Animal and Dog. 
+# The Dog class inherits from the Animal class, which means that it automatically inherits the speak method from Animal
+# We then create an instance of Dog called d, and we can call both the speak and bark methods on it.
+
+# Finally, we use the __bases__ attribute to access the tuple of base classes of the Dog class, which in this case is (<class '__main__.Animal'>,). This tuple contains a single element, which is the Animal class, indicating that Dog inherits from Animal.
 ``` 
-In this example, we define two classes, Animal and Dog. The Dog class inherits from the Animal class, which means that it automatically inherits the speak method from Animal. We then create an instance of Dog called d, and we can call both the speak and bark methods on it.
-
-Finally, we use the __bases__ attribute to access the tuple of base classes of the Dog class, which in this case is (<class '__main__.Animal'>,). This tuple contains a single element, which is the Animal class, indicating that Dog inherits from Animal.
 
 
+## global
+
+When used inside a function, the global keyword is used to indicate that a variable defined inside the function should be treated as a global variable, i.e., it should be **accessible from outside the function**. For example:
+
+```python
+x = 10
+
+def my_func():
+    global x
+    x = 20
+    print(x)
+
+my_func()
+print(x)  # prints 20
+```
+
+## assert: 
+
+The assert keyword is used to test if a given condition is true, and if it is not, it raises an exception. Here's an example:
+
+```python
+# assert <condition>, <optional error message>
+x = 10
+y = 5
+
+assert x > y, "x is not greater than y"
+# This code will raise an AssertionError because the condition x > y is not true.
+
+# we can also assert type 
+assert type(my_list) == list, "parameter must be a type of list" 
+assert len(my_list), "input list must not be empty" 
+```
 
 
+## try: 
+The try keyword is used to enclose a block of code that may raise an exception. If an exception is raised within the try block, the code will jump to a except block to handle the exception. Example:
+
+```python
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Error: division by zero")
+# This code will catch the ZeroDivisionError that would be raised by trying to divide 10 by 0, and it will print an error message instead of crashing.
+```
 
 
+## raise: 
 
-In Python, yield is used in a function to create a generator object. A generator is a special type of iterator that allows you to iterate over a sequence of values without generating the entire sequence at once. Instead, the values are generated on-the-fly as you iterate over the generator.
+The raise keyword is used to explicitly raise an exception. Here's an example:
+```python
+x = -1
+
+if x < 0:
+    raise ValueError("x cannot be negative")
+# This code will raise a ValueError exception with the message "x cannot be negative" if x is less than 0.
+```
+
+
+ 
+
+ 
+
+
+--- 
+
+## yield
+
+In Python, **yield** is used in a function to create a generator object. A generator is a special type of iterator that allows you to iterate over a sequence of values without generating the entire sequence at once. Instead, the values are generated on-the-fly as you iterate over the generator.
 
 When you use yield in a function, the function becomes a generator function. When the generator function is called, it returns a generator object that you can iterate over using a for loop or other iteration methods.
 
-Here's an example to demonstrate how yield works in a generator function:
-
-python
-Copy code
+Example: 
+```python
 def count_up_to(n):
     i = 1
     while i <= n:
@@ -66,36 +249,38 @@ def count_up_to(n):
 
 for num in count_up_to(5):
     print(num)
-Output:
-
-Copy code
 1
 2
 3
 4
 5
-In this example, the count_up_to() function is a generator function that generates a sequence of integers from 1 to n. The yield keyword is used to return each integer one at a time, as the generator is iterated over. The for loop at the bottom of the code block iterates over the generator, printing each integer in the sequence as it is generated.
-
+# the count_up_to() function is a generator function that generates a sequence of integers from 1 to n. 
+# The yield keyword is used to return each integer one at a time, as the generator is iterated over. 
+# The for loop at the bottom of the code block iterates over the generator, printing each integer in the sequence as it is generated.
+```
 The main advantage of using a generator instead of a list is that generators are more memory-efficient. Because they generate the sequence on-the-fly, they don't need to store the entire sequence in memory at once. This makes them ideal for iterating over very large or infinite sequences of values.
 
 
+--- 
 
-```bash
-hasattr() is a built-in Python function, not a method. It is used to check whether an object has an attribute with a given name.
+
+## hasattr()
+
+**hasattr()** is a built-in Python function, not a method. It is used to check whether an object has an attribute with a given name.
 
 The syntax of hasattr() is as follows:
 
-python
-Copy code
+```python
 hasattr(object, attribute_name)
-Here, object is the object you want to check for the presence of the attribute, and attribute_name is a string representing the name of the attribute you want to check for.
 
+# object is the object you want to check for the presence of the attribute, 
+# and attribute_name is a string representing the name of the attribute you want to check for.
+```
 The function returns True if the object has the specified attribute, and False otherwise.
 
 Here's an example of how to use hasattr():
 
-python
-Copy code
+```python
 class MyClass:
     x = 5
 
@@ -105,138 +290,94 @@ if hasattr(obj, 'x'):
     print("obj has attribute 'x'")
 else:
     print("obj does not have attribute 'x'")
-Output:
-
-python
-Copy code
 obj has attribute 'x'
-In this example, hasattr() is used to check whether the object obj has an attribute named x. Since the attribute exists in the MyClass class, which obj is an instance of, the function returns True, and the message "obj has attribute 'x'" is printed to the console.
 
-
-
-
+# hasattr() is used to check whether the object obj has an attribute named x. Since the attribute exists in the MyClass class, which obj is an instance of, the function returns True, and the message "obj has attribute 'x'" is printed to the console.
 ```
 
-The first parameter of each method:
-A. holds a reference to the currently processed object
-B. is always set to None
-C. is set to a unique random value
-D. is set by the first argument's value
+**hasatr()** can also be used to check for attributes from sublcasses, example: 
 
-The answer is A. holds a reference to the currently processed object. In Python, the first parameter of an instance method refers to the instance of the class that is calling the method. This parameter is usually called "self" by convention. It is used to access instance variables and other instance methods of the same object.
+```python 
+class Class1:
+    x = 1
+
+class Class2(Class1):
+    y = 4
+
+class Class3(Class2):
+    z = 0
+
+# Check if Class3 has an attribute from Class2
+if hasattr(Class3, 'y'):
+    print('Class3 has attribute y from Class2')
+
+# Check if Class3 has an attribute from Class1
+if hasattr(Class3, 'x'):
+    print('Class3 has attribute x from Class1')
+
+# class3 inherits from class2, which in turn inherits from class1. 
+# When an attribute is accessed on an object of class3, Python will first check if the object has the attribute defined directly on it. 
+# If not, it will check if the attribute is defined in the class of the object, and if not, it will check if it is defined in the superclass of the class and so on until it reaches the top-level object class.
+
+# output:
+Class3 has attribute y from Class2
+Class3 has attribute x from Class1
+```
+
+
+--- 
+
+## chr() ord()
+
+**chr()** and **ord()** are two built-in Python functions that are used for working with characters and their corresponding Unicode code points.
+
+chr() takes an integer representing a Unicode code point and returns the corresponding character. 
+
+For example:
+```python 
+chr(65)  
+"A" 
+# since the Unicode code point for 'A' is 65. 
+# chr() can also take a string representing an integer in the range 0-1114111 (which is the maximum Unicode code point) and returns the corresponding character.
+``` 
+
+
+ord() takes a character and returns its corresponding Unicode code point as an integer. 
+
+For example: 
+```python 
+ord('A') 
+65
+# which is the Unicode code point for 'A'. 
+# ord() can also take a string containing a single character and returns the corresponding Unicode code point.
+``` 
+
+These functions are often used together to convert characters to their corresponding code points and vice versa. For example, 
+
+```python 
+ord(chr(65)) 
+65
+# 65 which is the Unicode code point for 'A', 
+chr(ord('A') + 1) 
+'B'
+# which is the character corresponding to the Unicode code point 66.
+```
 
 
 
-The lexicon or "lexis" of a programming language refers to its vocabulary, i.e., the set of keywords, identifiers, literals, and symbols that are used to write programs in that language.
 
-In Python, the lexicon includes keywords such as if, else, while, for, def, class, import, from, and as, as well as built-in functions such as print(), input(), and len(). Python also has several built-in data types, including numbers, strings, lists, tuples, dictionaries, and sets.
-
-In addition to the built-in vocabulary, Python also allows users to define their own identifiers, such as variable names, function names, and class names. These user-defined identifiers become part of the lexicon of any program that uses them.
-
-Overall, Python's lexicon is designed to be relatively simple and easy to learn, making it a popular choice for beginners and experienced programmers alike.
 
 
 
 --- 
 
-A. chr(ord(x)) == x: This equation takes a character x, gets its Unicode code point using ord(), and then converts it back to a character using chr(). If x is a valid character, then this equation will always be true.
 
-D. ord(chr(x)) == x: This equation takes a Unicode code point x, converts it to a character using chr(), and then gets its Unicode code point using ord(). If x is a valid Unicode code point, then this equation will always be true.
+# subclasses  # superclasses 
 
+- **subclass** is a class that inherits properties and methods from a superclass. The subclass can add new properties or methods or override the inherited ones. 
+- **superclass** is a class that is being inherited from. 
 
-
-chr() and ord() are two built-in Python functions that are used for working with characters and their corresponding Unicode code points.
-
-chr() takes an integer representing a Unicode code point and returns the corresponding character. For example, chr(65) returns the character 'A', since the Unicode code point for 'A' is 65. chr() can also take a string representing an integer in the range 0-1114111 (which is the maximum Unicode code point) and returns the corresponding character.
-
-ord() takes a character and returns its corresponding Unicode code point as an integer. For example, ord('A') returns 65, which is the Unicode code point for 'A'. ord() can also take a string containing a single character and returns the corresponding Unicode code point.
-
-These functions are often used together to convert characters to their corresponding code points and vice versa. For example, ord(chr(65)) returns 65, which is the Unicode code point for 'A', and chr(ord('A') + 1) returns 'B', which is the character corresponding to the Unicode code point 66.
-
-
-
-
-
-
-
-
-
-
-
-
-In Python, __main__ is the name of the default module that is executed when a Python script is run from the command line. It is also the name of the top-level script environment that Python creates when a module is run as the main program.
-
-When a Python script is run, the interpreter first initializes the environment and sets up some special variables, including __name__. If the script is being run as the main program, __name__ is set to the string "__main__". If the script is being imported as a module into another script, __name__ is set to the name of the module.
-
-This distinction is useful for writing scripts that can be used both as stand-alone programs and as modules in larger programs. By checking the value of __name__, a script can determine whether it is being run as the main program or imported as a module, and can take different actions in each case.
-
-For example, a script might define a function or class that can be imported and used by other scripts, but also include some code at the bottom of the script that runs a test of the function or class if the script is being run as the main program. In this case, the test code would be enclosed in an if __name__ == "__main__": block, so that it is only executed if the script is being run directly and not when it is imported as a module.
-
-
-
-
-
-
-
-
-The correct way to declare a two-parameter lambda function raising its first parameter to the power of the second parameter is:
-
-D. lambda x, y: x ** y
-
-This lambda function takes two parameters x and y, and returns the result of raising x to the power of y using the ** operator.
-
-Option A is incorrect because lambda is not defined with an assignment operator.
-
-Option B is close but is missing the colon : that separates the argument list from the expression.
-
-Option C is incorrect because it uses the def keyword which is used for defining a regular function, not a lambda function.
-
-Option D is the correct syntax for defining a two-parameter lambda function that raises the first parameter to the power of the second parameter.
-
-
-
-
-
-
-
-def f(n):
-if n==1:
-return 1 
-return n + f(n-1)
-print(f(2))
-The expected output of the given code is 3.
-
-The function f takes an integer n as input and returns the sum of all integers from 1 to n.
-
-If n equals 1, the function returns 1 (the base case). Otherwise, it adds n to the result of calling f(n-1) recursively.
-
-In this case, we call the function with n = 2.
-
-The first condition n == 1 is not met, so the function adds n (which is 2) to the result of calling f(n-1) with n-1 = 1.
-
-Since n is now 1, the function returns 1 (the base case).
-
-Therefore, the final result of f(2) is 2 + 1 = 3, which is what is printed by the print statement.
-
-
-
-
-A function called issubclass (c1, c2) is able to check if:
-A. c1 and c2 are both subclasses of the same superclass
-B. c2 is a subclass of c1
-C. c1 is a subclass of c2
-D. c1 and c2 are not subclasses of the same superclass
-
-
-
-
-
-# subclasses # superclasses 
-
-a subclass is a class that inherits properties and methods from a superclass. A superclass is a class that is being inherited from. The subclass can add new properties or methods or override the inherited ones.
-
-Here is an example of a superclass and a subclass in Python:
-
+For example:
 ```python 
 class Animal:
     def __init__(self, name, species):
@@ -259,39 +400,22 @@ print(dog1.name)      # Fido
 print(dog1.species)   # Dog
 print(dog1.breed)     # Labrador
 dog1.speak()          # Woof!
+
+# Superclass: Animal that has an __init__ method to initialize the name and species attributes and a speak method that prints "I am an animal".
+
+#  The subclass Dog inherits from the Animal class using the syntax class Dog(Animal):. 
+
+# It has its own __init__ method that calls the super().__init__ method to initialize the name attribute and set the species attribute to "Dog". It also has a breed attribute. The speak method is overridden to print "Woof!".
+
+# We then create an instance of Dog called dog1 with the name "Fido" and the breed "Labrador". We can access its attributes using the dot notation and call its methods. When we call dog1.speak(), it prints "Woof!" because the speak method was overridden in the Dog subclass.
 ```
 
-In this example, we have a superclass Animal that has an __init__ method to initialize the name and species attributes and a speak method that prints "I am an animal".
-
-The subclass Dog inherits from the Animal class using the syntax class Dog(Animal):. It has its own __init__ method that calls the super().__init__ method to initialize the name attribute and set the species attribute to "Dog". It also has a breed attribute. The speak method is overridden to print "Woof!".
-
-
-We then create an instance of Dog called dog1 with the name "Fido" and the breed "Labrador". We can access its attributes using the dot notation and call its methods. When we call dog1.speak(), it prints "Woof!" because the speak method was overridden in the Dog subclass.
-
-In summary, a subclass inherits attributes and methods from a superclass and can add its own attributes and methods or override the inherited ones. The super() function is used to call methods from the superclass.
 
 
 
 
 
-
-
-
-
----
-
-# PYTHON
-
-**python has dynamic typing**
-
-- meaning I can reassign variable to different data type later in code
-  - ```dogs = 2 <more code> dogs = ["franki", "jessie"]```
-  - its easy for programmer because dont have to declare data type each time you declare something
-  - it double edge sword because you can hit bugs for unexpected data types
-  - you can use build in type function **type()** to quickly check the type of any object
-- *IN C++* if you declare *dogs* as integer + value you can not change that later in code
-
-
+ 
 ---
 
 # PyPi
@@ -301,23 +425,49 @@ In summary, a subclass inherits attributes and methods from a superclass and can
 - so for example if we want to use **colorama** we install it with pip
 - ```pip install colorama``` and now we can use it in our scripts
 
-**so withy PyPI we can install external modules and packages** now we will learn how to write our own.
+**so withy PyPI we can install external modules and packages** 
 
-### module is just a .py script used in another script
-- packages are collection of moduels
-- module is really just .py script..its fancy way of saying here Im using another .py script
-- and this is how you actualy write nice scripts / programs: that there are multiple files and you importing stuff from them
 
-```python
-# file_one with function my_func
-
-# file_two (same directory) and we want to import my_func this is how:
-# - from file_one import my_func
-# BUT both files are in same directory
-```
 
 
 # IMPORT: 
+
+
+import modules using the **import** statement.
+
+```python 
+# Having module named my_module.py that contains some functions and variables. 
+# To import this module, you can use the following syntax:
+ 
+import my_module
+# This will import the my_module module and make all of its functions and variables available in your program. 
+# You can access these functions and variables using the my_module. prefix. For example:
+
+import my_module
+
+result = my_module.add(2, 3)
+print(result)
+# In this example, the add function from my_module is called using the my_module. prefix.
+```
+
+
+Another way to import modules is to use the **from** statement. For example:
+
+```python
+from my_module import add
+
+result = add(2, 3)
+print(result)
+
+# In this example, only the add function is imported from the my_module module. 
+# This means you can call the add function directly without using the my_module. prefix.
+
+# Using from can be useful when you only need to use a few functions or variables from a module. 
+# However, be careful not to use from too much, as it can make your code harder to read and maintain. 
+# Also, be aware that if you use from to import a function or variable, you won't be able to access any other functions or variables in that module without importing them separately.
+``` 
+
+***other explanation** 
 
 In Python, a module is simply a file containing Python definitions and statements. To use the functions, classes, and variables defined in a module, you need to import it into your current Python script.
 
@@ -378,7 +528,55 @@ Underscores are used in Python to indicate various naming conventions and to giv
 - This makes it harder to accidentally modify or access the variable or method from outside the class. 
 
 4) **Double leading and trailing underscore** 
-- 
+- This convention is used for special methods or attributes in Python. 
+- These methods have a special meaning in Python and are used to implement specific behaviors in classes. 
+- For example, ```__init__()``` is a special method used to *initialize an instance* of a class, 
+- and ```__doc__``` is a special attribute used to access the documentation string of a class or function.
+
+5) **Single underscore**
+- This convention is used as a throwaway variable, indicating that the variable is not going to be used. 
+- For example, ```_, x = some_function()```, where the first value returned by some_function() is not needed.
+-  the single underscore character (_) can also be used as a *variable name or as a placeholder for unused variables or values* for example: 
+```python 
+# the underscore is used as a placeholder variable. 
+for _ in range(10):
+    # do something
+# it is often used when you don't need the value of the current iteration in a loop. Since the underscore variable is not used within the loop body, 
+# it tells the reader that the value is not important and can be ignored.
+
+# in normal loop we iterate 10 times, and value of i is used for something: 
+for i in range(10):
+    print(i)
+   ...: 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+# but once you place underscore i is not used: 
+for _ in range(10):
+    print(i)
+   ...: 
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+
+```
+
+
 
 
 --- 
@@ -422,6 +620,29 @@ The __init__.py file can contain the same Python code that any other module can 
 ![](./pngs/modules03.png)
 
 
+In Python, __main__ is the name of the default module that is executed when a Python script is run from the command line. It is also the name of the top-level script environment that Python creates when a module is run as the main program.
+
+When a Python script is run, the interpreter first initializes the environment and sets up some special variables, including __name__. If the script is being run as the main program, __name__ is set to the string "__main__". If the script is being imported as a module into another script, __name__ is set to the name of the module.
+
+This distinction is useful for writing scripts that can be used both as stand-alone programs and as modules in larger programs. By checking the value of __name__, a script can determine whether it is being run as the main program or imported as a module, and can take different actions in each case.
+
+For example, a script might define a function or class that can be imported and used by other scripts, but also include some code at the bottom of the script that runs a test of the function or class if the script is being run as the main program. In this case, the test code would be enclosed in an if __name__ == "__main__": block, so that it is only executed if the script is being run directly and not when it is imported as a module.
+
+
+
+In the case of __init__(self), the double underscores are used to indicate that the method is a special method in Python. Specifically, __init__() is a special method used to initialize an instance of a class. By convention, all special methods in Python are surrounded by double underscores.
+
+However, note that the double underscore method name mangling mentioned earlier for example: 
+
+```python 
+__my_private_variable 
+# is different from the use of double underscores to indicate special methods (e.g., __init__). 
+
+# In the case of method name mangling, the double underscores are used to modify the name of a variable or method to avoid naming conflicts, while in the case of special methods, they are used to indicate the intended purpose of the method.
+```
+
+
+
 ---
 
 # __pycache__
@@ -443,25 +664,7 @@ As a programmer, you can largely just ignore it... All it does is make your prog
 
 ---
 
-# ASCII vs UTF-8
 
-```yaml
-UTF-8 is an abbreviation for Unicode Transformation Format — 8 bits.
-
-The “8” here means 8-bit blocks are used to represent a character.
-UTF-8 is the most commonly used encoding format for Unicode characters.
-So, simply speaking, Unicode is a character set and UTF-8 is an encoding format.
-With a character set, a character is translated to a decimal number.
-
-
-ASCII is an abbreviation for American Standard Code for Information Interchange
-It is the first character set and character encoding standard for electronic communication.
-ASCII contains 128 characters which contain the lower and upper case English letters (a-zA-Z),
-the numbers from 0–9, and some special characters.
-ASCII is subset of UTF-8
-
-Unidecode is a library that can be used to translate Unicode characters to “approximate” ASCII counterparts. For example, Ä => , Å=> A and Ö=> O.
-```
 
 
 ---
@@ -547,47 +750,28 @@ pylint filename.py
 
 
 
+### module is just a .py script used in another script
+- packages are collection of moduels
+- module is really just .py script..its fancy way of saying here Im using another .py script
+- and this is how you actualy write nice scripts / programs: that there are multiple files and you importing stuff from them
 
+```python
+# file_one with function my_func
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-# decompile:
-
-```bash
-#install uncompile if not installed
-pip install uncompyle6
-
-uncompyle6 <what_they_dont_wants_U2c>   #std output
-uncompyle6 -o . <what_they_dont_wants_U2c>
+# file_two (same directory) and we want to import my_func this is how:
+# - from file_one import my_func
+# BUT both files are in same directory
 ```
 
 
 
 
 
----
-# PYTHON CRASH COURSE:
+
 ---
 
-## DATA TYPES:
+
+# DATA TYPES:
 
 **every object in python has associated data type** and data types determine what you can (and can not) do with the object...
 
@@ -817,11 +1001,53 @@ from termcolor import colored
 
 
 
+## split 
+
+```python 
+split() is used to split a string into a list of substrings based on a separator. It takes one optional argument sep which is the separator to use when splitting the string. If sep is not provided, any whitespace characters (spaces, tabs, newlines) will be used as the separator. Here's an example:
+
+
+sentence = "The quick brown fox jumps over the lazy dog"
+words = sentence.split() # split into words using whitespace as separator
+print(words)
+# Output: ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+
+filename = "myfile.txt"
+parts = filename.split(".") # split into filename and extension
+print(parts)
+# Output: ['myfile', 'txt']
+```
+
+
+## join 
+
+```python 
+join() is used to join a sequence of strings (e.g. a list or tuple) into a single string, using a separator string. Here's an example:
+ 
+words = ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+sentence = " ".join(words) # join the words with a space separator
+print(sentence)
+# Output: 'The quick brown fox jumps over the lazy dog'
+
+filename_parts = ['myfile', 'txt']
+filename = ".".join(filename_parts) # join the filename and extension with a dot separator
+print(filename)
+# Output: 'myfile.txt'
+Note that join() is a method of the separator string, so you call it on the separator and pass the sequence of strings to be joined as an argument.
+```
+
+
+
+
+
+
+
 
 
 
 
 ---
+
 ## ARITHMETICS
 
 ```python
@@ -1075,15 +1301,12 @@ num4 = random.gauss(0, 1)
 print(num4)
 -1.1447287731483977
 ```
+ 
 
 
+--- 
 
-
-## 
-
-
-
-### INPUT
+# INPUT
 
 - always takes as strings
 
@@ -1235,14 +1458,7 @@ while game_on: # since we have boolean we dont have to do "while game_on == True
 
 ```
 
-
-
-
-- maybe also *pick which logs we want to check vmkernel or hostd*
-**ale czy musze nad tym spedzac czas skoro mam grafana ?**
-
-
-
+ 
 ---
 
 # STATEMENTS
@@ -1288,6 +1504,43 @@ and example on how to iterate through dictionary
 - this is also tuple unpacking at work
 - but remember: dictionarys are unordered so when you iterate on large dictionary there is no guarantee you gonna get results as you put them in
 
+## lambdas 
+
+
+
+The correct way to declare a two-parameter lambda function raising its first parameter to the power of the second parameter is:
+
+D. lambda x, y: x ** y
+
+This lambda function takes two parameters x and y, and returns the result of raising x to the power of y using the ** operator.
+
+Option A is incorrect because lambda is not defined with an assignment operator.
+
+Option B is close but is missing the colon : that separates the argument list from the expression.
+
+Option C is incorrect because it uses the def keyword which is used for defining a regular function, not a lambda function.
+
+Option D is the correct syntax for defining a two-parameter lambda function that raises the first parameter to the power of the second parameter.
+  ## lambda
+  
+  A lambda function is a small anonymous function.
+  
+  A lambda function can take any number of arguments, but can only have one expression.
+  
+  One time use function that you quyickly use it and never reference again
+  
+  Anonymous function:
+  - we dont give it a name
+  - we dont start it with def keyword
+  - simply start with keyword lambda
+  -
+  
+  ```python
+  x = lambda a : a + 10
+  print(x(5))
+  ```
+
+
 
 ## WHILE LOOPS
 - while something is true continue
@@ -1299,6 +1552,19 @@ and example on how to iterate through dictionary
 
 
 
+**conditional expression** 
+
+```python 
+
+x = 3 % 1 
+y 1 if x > 0 else 0 
+
+
+# The first line assigns the value of the remainder of the division of 3 by 1 to the variable x. Since 3 is greater than 1, the result of this calculation is 0.
+
+# This code calculates the remainder of 3 divided by 1, which is 0. The value of x is then 0. The second line of code uses a ternary operator to assign either 1 or 0 to the variable y. If x is greater than 0 (which is not the case here), y will be assigned the value 1. Otherwise, y will be assigned the value 0. Since x is 0 in this case, y will be assigned the value 0.
+
+```
 
 # BREAK CONTINUE PASS
 
@@ -1671,17 +1937,7 @@ dict_items([('who', 'me'), ('where', 'here'), ('what', 'pandas'), ('why', {'why'
 
 
 
-
-
-
----
-
-# LOGIC - nested statements and scope
-
-
-
-
-
+ 
 
 ---
 
@@ -1713,7 +1969,13 @@ help(mylist.remove)
 
 
 
+The first parameter of each method:
+A. holds a reference to the currently processed object
+B. is always set to None
+C. is set to a unique random value
+D. is set by the first argument's value
 
+The answer is A. holds a reference to the currently processed object. In Python, the first parameter of an instance method refers to the instance of the class that is calling the method. This parameter is usually called "self" by convention. It is used to access instance variables and other instance methods of the same object.
 
 
 
@@ -1896,103 +2158,108 @@ andre
 ---
 
 
+<div style="page-break-after: always;"></div>
+
+
 # FUNCTIONS
 
----
-
-[comment]: _functions
-
-**FUNCTION IS A block of organized, resuable code, that runs when you call it**
-
-Too write good functions / In order to became effective programmer you need to know about control flow, loops and other Python logic
-
-**Basicaly the main point of functions is to execute block of (reusable) code**
-
-Functions are object that can not be passed to another object, but you can call function inside another function
-
+- **FUNCTION IS A block of organized, resuable code, that runs when you call it**
+- function is reusable block of code that performs a specific task.             
+- Functions allow you to break down complex programs into smaller, more manageable pieces of code 
+- **Basicaly the main point of functions is to execute block of (reusable) code**
+- Functions are object that can not be passed to another object, but you can call function inside another function
 
 ![](./pngs/functions_basiscs.png)
 
 
 
-![](./pngs/functions_basiscs2.png)
+
+
+
+```python 
+def f(n):
+  if n==1:
+    return 1 
+    return n + f(n-1)
+print(f(2))
+
+# The function f takes an integer n as input  
+
+# First, the function checks if n is equal to 1 using an if statement. If n is equal to 1, the function immediately returns 1. 
+ 
+# If n is not equal to 1, the function returns the value of n plus the result of calling f(n-1) recursively. In other words, the function adds n to the result of calling itself with n-1 as the argument.
+```
 
 ![](./pngs/functions_basiscs4.png)
 
 
-THE IMPORTANCE OF **RETURN**
+## THE IMPORTANCE OF **RETURN**
+
 - allows you to save to variable
 - using PRINT doesnt allow you to save to variable
+- When a return statement is executed the function stops executing and control is returned to the caller. 
+  - If a value is provided after the return keyword, that value is passed back to the caller as the result of the function.
 
-![](./pngs/functions_basiscs3a.png)
+```python 
+def add_numbers(a, b):
+    """This function adds two numbers and returns the result."""
+    return a + b
+
+# add_numbers() function takes two parameters, a and b, and returns the result of adding them together using the return keyword.
+
+result = add_numbers(5, 7)
+print(result)                   # Output: 12
+
+# This will call the add_numbers() function with the values 5 and 7 as arguments, and store the result in the result variable. The print() function is then used to output the value of result to the console.
+```
 
 
 ---
+
+<div style="page-break-after: always;"></div>
+
 
 ## FUNCTIONS LOGIC
 
 
 ![](./pngs/functions_basiscs5.png)
 
-KEY POINTS:
+
+**KEY POINTS:**
 - remember about indentations
 - if else block
 - return has its own indentation
-
----
-
-![](./pngs/functions_basiscs6.png)
-
-KEY POINTS:
 - remember about empty place holder if you want to append anything down the line
+ 
+ 
 
----
-
-THE RETURN:
-
-![](./pngs/functions_basiscs7.png)
-
-
-
----
-
-RETURNING MULTIPLE ITEMS FROM FUCTION
-
-using tuple:
+### RETURNING MULTIPLE ITEMS FROM FUCTION using tuple:
 
 ![](./pngs/functions_basiscs8.png)
 
 
 
 ---
-### FUNCTIONS LOGIC ALSO MEANS USING LESS CODE TO ACHIEVE SAME THING
+ 
 
-EXAMPLE1
-![](./pngs/functions_basiscs92.png)
-
+EXAMPLE 4: 
 
 
-EXAMPLE2
-![](./pngs/functions_basiscs91.png)
+```python 
+def foo(x,y):                           # The function foo takes two arguments, x and y.
+     return y(x) + y(x+1)               # y(x) evaluates to 1*1 = 1 
 
+print(foo(1,lambda x: x*x))             # y(x+1) evaluates to (1+1)*(1+1) = 4
+#The print statement prints the value 5.
 
-BOTH EXAMPLES ACHIEVE THE SAME THING, BUT EXAMPLE2 USES LESS CODE, WHY ?
-BECAUSE ITS UTULIZES BUILD IN FUNCTIONS
-
-**MIN** & **MAX** FUNCTIONS TAKES MUCH LESS THAN LOOKING FOR SMALLER NUMBER WITH IF ELSE
-
-
-EXAMPLE 3
-- if all your checks return BOOLEAN you can use them in the same line:
-
-![](./pngs/functions_basiscs93.png)
-
-
-
-
+#So, the output of the code is 5. The function foo takes a number x and a function y, and returns the sum of y(x) and y(x+1). In this case, x is 1 and y is the lambda function lambda x: x*x. So, y(x) is 1*1 = 1 and y(x+1) is (1+1)*(1+1) = 4, and their sum is 1 + 4 = 5.So, the output of the code is 5. The function foo takes a number x and a function y, and returns the sum of y(x) and y(x+1). In this case, x is 1 and y is the lambda function lambda x: x*x. So, y(x) is 1*1 = 1 and y(x+1) is (1+1)*(1+1) = 4, and their sum is 1 + 4 = 5.
+```
 
 
 ---
+
+<div style="page-break-after: always;"></div>
+
 
 ## TYPES OF FUNCTIONS:
 
@@ -2009,105 +2276,301 @@ EXAMPLE 3
 - most commonly used functions: https://www.positronx.io/useful-python-built-in-functions-and-methods-list/
 
 
+  ## functions ARGS & KWARGS
+  
+  **ARGS**
+  - pass as many arguments as you want to your function
+  - example below shows that
+  ![](./pngs/functions_basis_args.png)
+  
+  - **args** can be any word actualy, as long as you have start before it it will work
+  
+  ![](./pngs/functions_basis_args2.png)
+  
+  **KWARGS**
+  - same as args just creates dictionary instad of tuples
+  
+  
+  
+  - we can also mix them toghether,
+  - **the thing is you have to use them in this order args, kwargs**
+  ![](./pngs/functions_basis_args3.png)
+  
+
+
  
 
-**hasattr()** 
+---
 
-hasattr() is a built-in function in Python. It is not a method because it does not belong to any specific object or class. Instead, it is a function that takes two arguments: an object and a string representing the name of an attribute or method. The function returns True if the object has the attribute or method with the given name, and False otherwise. Here's an example:
 
-python
-Copy code
-class MyClass:
+<div style="page-break-after: always;"></div>
+
+
+# CLASS 
+
+- class is a blueprint for creating objects
+
+- It defines a set of attributes and methods that the objects created from the class will have 
+
+- An object is an instance of a class, and it can have its own values for the attributes defined in the class. 
+
+- The ```__init__``` method is a special method that gets called when an object of the class is created. It is used to initialize the object's attributes.
+
+- ```self``` is a reference to the object being created 
+
+- ```self.name = name``` sets name atribute of the object to the value passed in as parameter to the ```__init__``` method 
+
+
+```python 
+#
+# define a Person class with two attributes (name and age) and one method (say_hello). 
+#
+# __init__ method is a special method that is called when a new object of the class is created. 
+# It sets the initial values of the name and age attributes.
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def say_hello(self):
+        print("Hello, my name is", self.name, "and I'm", self.age, "years old.")
+# say_hello method is a regular method that takes no arguments (other than self, which is a reference to the object itself). It simply prints out a message with the person's name and age.
+
+# To create an object of the Person class, we simply call the class like a function, passing in the necessary arguments:
+p1 = Person("Alice", 30)
+p2 = Person("Bob", 25)
+
+# This creates two Person objects, p1 and p2, with different values for the name and age attributes.
+
+p1.say_hello()  # prints "Hello, my name is Alice and I'm 30 years old."
+p2.say_hello()  # prints "Hello, my name is Bob and I'm 25 years old."
+```
+
+
+# class hierarchy 
+
+```python 
+#
+# hierarchy of classes: 
+#
+class A:
+    pass
+# A is a base class that does not have any defined methods or attributes
+
+class B(A):
+    pass
+# B is a subclass of A.
+
+class C(A):
+    pass
+# C is another subclass of A.
+
+class D(B,C):
+    pass
+# D is a subclass of both B and C, which means it inherits from both of them. 
+
+class Class_3(A,C):
     def __init__(self):
-        self.x = 1
+        super().__init__()
+# Class_3 is a subclass of both A and C. It has an __init__ method that calls the __init__ method of its superclasses using super().__init__(). 
 
-my_obj = MyClass()
-print(hasattr(my_obj, 'x')) # True
-print(hasattr(my_obj, 'y')) # False
-In this example, hasattr() is called with my_obj as the object and 'x' and 'y' as the attribute names. Since my_obj has an attribute called x, hasattr(my_obj, 'x') returns True, while hasattr(my_obj, 'y') returns False because my_obj does not have an attribute called y.
+class Class_4(C,B):
+    pass
+# Class_4 is a subclass of both C and B. 
 
+class Class_1(D):
+    pass
+# Class_1 is a subclass of D.
 
-
-
-```python
-# and few examplese here
->>> len(andre)
-3
->>> min(andre)
-'5AC'
->>> max(andre)
-'fit'
->>> sorted(andre)
-['5AC', 'dedicated', 'fit']
+class Class_2(A,B):
+    pass
+# Class_2 is a subclass of both A and B.
 ```
 
 
-- another example of function:
+
+--- 
 
 
-```python
-def moja_funkcja()
+# class instance
 
-#tutaj define if function is expected to take any arguments, we call this argument as we want )  # function header
+```python 
+class x:
+pass
+class y(x):
+pass
+class z(y):
+pass 
+x=z()
+z=z()
+isinstance(x,z) isinstance(z,x)
 
-  # here in the body we do the job:
+# The first three lines of code define three Python classes x, y, and z. The x class has no attributes or methods, and the y and z classes inherit from x.
 
-  return avg
+# The last two lines of code create two objects, one of type z and one of type x.
 
-# call the function by its name and provide
-moja_funkcja()  
+# The first line creates an object of type z and assigns it to the variable x. The second line creates another object of type z and assigns it to the variable z.
 
-# jesli funkcja is expecting argument we need to give it to it
+# The first isinstance() call checks whether the object x is an instance of the z class. Since x was created as an instance of the z class, this call will return True.
 
+# The second isinstance() call checks whether the object z is an instance of the x class. However, the object z was created as an instance of the z class, not the x class. Therefore, this call will return False.
+
+# isinstance(x, z) # True
+# isinstance(z, x) # False
 ```
 
-## functions ARGS & KWARGS
-
-**ARGS**
-- pass as many arguments as you want to your function
-- example below shows that
-![](./pngs/functions_basis_args.png)
-
-- **args** can be any word actualy, as long as you have start before it it will work
-
-![](./pngs/functions_basis_args2.png)
-
-**KWARGS**
-- same as args just creates dictionary instad of tuples
 
 
+--- 
 
-- we can also mix them toghether,
-- **the thing is you have to use them in this order args, kwargs**
-![](./pngs/functions_basis_args3.png)
+
+## __dict __  in class
+
+In Python, every object (including classes and instances) has a ```__dict__``` attribute that stores the object’s attributes as a dictionary. 
+
+This means that all object attributes (both class and instance) can be accessed and modified using the dictionary-like syntax
+
+From the exmple above we can display all atributes 
+
+```python 
+Person.__dict__
+ 
+mappingproxy({'__module__': '__main__',
+              '__init__': <function __main__.Person.__init__(self, name, age)>,
+              'say_hello': <function __main__.Person.say_hello(self)>,
+              '__dict__': <attribute '__dict__' of 'Person' objects>,
+              '__weakref__': <attribute '__weakref__' of 'Person' objects>,
+              '__doc__': None})
+```
+
+
+
+# subclasses 
+
+
+
+
+
+--- 
+
+# isinstance 
+
+ 
+
+```python 
+#
+# To check if object is an instance of the Lower class would be to use isinstance(object, Lower):
+# 
+class Upper:
+    def __init__(self):
+        self.property = "upper"
+
+class Lower(Upper):
+    def __init__(self):
+        super().__init__()
+
+object = Lower()
+isinstance(object, Lower)     # Returns True
+object.property               # Returns "upper"
+#
+# The two classes: Upper and Lower. Lower is a subclass of Upper, which means it inherits all of its attributes and methods.
+# 
+# When we create an instance of Lower and assign it to the variable object, we can check if it is an instance of the Lower class using the isinstance function with isinstance(object, Lower), which returns True.
+# 
+# Even though object.property returns "upper", the fact that Lower is a subclass of Upper means that it also has the attribute property with the same value inherited from Upper. So object.property returns the value that was set in the __init__ method of Upper.
+super().__init__() is a call to the constructor of the superclass of Lower, which is Upper. In other words, it calls the __init__() method of the Upper class and initializes the property attribute to the value "upper".
+
+When you create an instance of the Lower class, its __init__() method is called, and this method then calls the __init__() method of its superclass (Upper) using the super() function, which returns a temporary object of the superclass that allows you to call its methods.
+
+So super().__init__() simply means to call the constructor of the superclass and pass any necessary arguments. In this case, the Upper class does not take any arguments, so we don't need to pass anything to super().__init__().
+```
+
+ 
+
+
+
+
+--- 
+
+# CLASS CONSTRUCTORS: 
+
+class constructor is a special method that is used to initialize the object's attributes when the object is created. The constructor method is called automatically when an object is instantiated, and it can take parameters to set the initial state of the object.
+
+
+- The constructor is a special method in Python classes that is used to initialize instance variables when objects are created. 
+- It is always named ```__init__()``` and takes self as its first argument.
+- The constructor method can take parameters that are used to set the initial state of the object.
+- By convention, it should not return anything other than None, If it does, a TypeError will be raised.
+- first parameter of a constructor in Python must always be named **self**.
+
+
+Constructor is a special method that is used to initialize objects when they are created. The constructor method is always named __init__() and it takes at least one argument, self, which refers to the instance of the class that is being created.
+
+Here's an example of a simple Python class that has a constructor:
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+In this example, the Person class has a constructor that takes two arguments, name and age. The constructor initializes two instance variables, self.name and self.age, with the values of the name and age arguments.
+
+When you create an instance of the Person class, you pass in values for the name and age arguments:
+```person1 = Person("Alice", 25)```
+
+This creates a new instance of the Person class, with self referring to the new instance. The constructor initializes the name instance variable to "Alice" and the age instance variable to 25.
+
+You can access these instance variables using dot notation:
+```python 
+print(person1.name)
+# Output: Alice
+
+print(person1.age)
+# Output: 25
+```
+
+
+
+
+
+
+ 
+
+```python 
+class Class:
+  variable = 0            # class variable 
+  def __init__(self):
+    self.value = 0        # instance variable 
+
+object1 = Class()         # object1's value is still 0 because it wasnt changed.
+Class.variable += 1       # Class's variable is now 1 because we incremented it using Class.variable += 1.
+object2 = Class()         
+object2.value += 1        # object2's value is now 1 because we incremented it using object2.value += 1.
+
+# First, we define a class called Class that has a class variable variable initialized to 0, and an __init__ method that initializes an instance variable value to 0.
+
+# Next, we create an object of Class called object1 using the Class() constructor. This initializes object1 with a value of 0 for value, since that's what's specified in the __init__ method.
+
+# Then, we increment the class variable variable by 1 by using the syntax Class.variable += 1. This changes the value of the variable attribute of the Class class itself, not the variable attribute of any instances of the class.
+
+# After that, we create a second object of Class called object2. This initializes object2 with a value of 0 for value, since that's what's specified in the __init__ method.
+
+# Finally, we increment the value attribute of object2 by 1 by using the syntax object2.value += 1. This changes the value of the value attribute of object2, not the value attribute of any other instance of the Class class.
+```
+
+![png](./pngs/classes_002.png) 
+
 
 
 ---
 
 
-# GENERATORS
-
-- generator functions allow us to write a function that send back a value and later resume to pick up where it left off
-- generators allow us to create sequence of values over time, so we dont have to create whole sequence at once and hold it in memory
-- **yield** is a key word here
-- with generators you dont declare any variable like you usualy do with functions (top of the functions, a holder if you will), so its not stored in memory
-
-code example:
-
-```python
-# generate square number of N
-def gensquares(N):
-  # notis here we dont specify any holder for the squres, just for loop
-  for i in range(N):
-    yield i**2
-# but this doesnt print it, and if you just call the function you will get the space in memory
-# so next step is print each generated squaere with another for loop
-for x in gensquares(5):
-  print(x)
-```
 
 
----
+
+
+<div style="page-break-after: always;"></div>
+
 
 # DECORATORS
 
@@ -2143,278 +2606,9 @@ NOW, THE DECORATOR PART:
 
 ![](./pngs/decorator06.png)
 
-- DECORATORS USED IN OTHERFRAMEWORK , LIKE IN FLASK ,
-  - framework is software library that provides generic functionality which can be used to build applications, flask & django frameworks for web developement.
 
----
 
-
-# class 
-
-```python 
-class ClassName:
-    class_attribute = "value" # class attribute
-
-    def __init__(self, arg1, arg2):
-        self.instance_attribute1 = arg1 # instance attribute
-        self.instance_attribute2 = arg2 # instance attribute
-
-    def instance_method(self, arg):
-        # instance method
-        pass
-
-    @classmethod
-    def class_method(cls, arg):
-        # class method
-        pass
-
-    @staticmethod
-    def static_method(arg):
-        # static method
-        pass
-```
-A class is defined using the class keyword, followed by the class name and a colon.
-Class attributes are defined at the top level of the class definition.
-The __init__() method is the constructor for the class and is called when an instance of the class is created. It takes the self parameter (which refers to the instance being created) and any other required arguments.
-Instance attributes are defined in the __init__() method.
-Instance methods take the self parameter and can operate on instance attributes.
-Class methods are defined using the @classmethod decorator and take the cls parameter (which refers to the class itself).
-Static methods are defined using the @staticmethod decorator and do not take any special parameters.
-
-
-
-
-
-
-In Python, a class is a blueprint for creating objects with certain properties and behaviors. The __init__ method is a special method that gets called when an object of the class is created. It is used to initialize the object's attributes.
-
-(self, val) are the parameters of the __init__ method. self is a reference to the object being created, and val is a value that is used to set the val attribute of the object.
-
-self.val = val sets the val attribute of the object to the value passed in as a parameter to the __init__ method.
-
-get(self) and show(self) are also methods of the class. get returns the value of the val attribute, and show prints the value of the val attribute to the console.
-
-Because get and show are methods of the same class, they can be accessed using the self keyword within the class. For example, you could call self.get() or self.show() within another method of the same class to retrieve or display the value of the val attribute.
-
-Here is an example of how this class might be used:
-
-```python 
-class MyClass:
-    def __init__(self, val):
-        self.val = val
-
-    def get(self):
-        return self.val
-
-    def show(self):
-        print(self.val)
-
-# Create an object of the class
-my_object = MyClass(42)
-
-# Call the get method to retrieve the value of the val attribute
-value = my_object.get()
-print(value) # Output: 42
-
-# Call the show method to display the value of the val attribute
-my_object.show() # Output: 42
-```
-
-In this example, my_object is an instance of the MyClass class. The __init__ method is called with a value of 42, which sets the val attribute of my_object to 42. The get method is called to retrieve the value of the val attribute, and the show method is called to display the value of the val attribute to the console.
-
-
-# class instance
-
-```python 
-class x:
-pass
-class y(x):
-pass
-class z(y):
-pass 
-x=z()
-z=z()
-isinstance(x,z) isinstance(z,x)
-
-# The first three lines of code define three Python classes x, y, and z. The x class has no attributes or methods, and the y and z classes inherit from x.
-
-# The last two lines of code create two objects, one of type z and one of type x.
-
-# The first line creates an object of type z and assigns it to the variable x. The second line creates another object of type z and assigns it to the variable z.
-
-# The first isinstance() call checks whether the object x is an instance of the z class. Since x was created as an instance of the z class, this call will return True.
-
-# The second isinstance() call checks whether the object z is an instance of the x class. However, the object z was created as an instance of the z class, not the x class. Therefore, this call will return False.
-
-# isinstance(x, z) # True
-# isinstance(z, x) # False
-``` 
-
-
-
-
-
-
-
-
-
-
-# CLASS CONSTRUCTORS: 
-
-
-In summary, the constructor is a special method in Python classes that is used to initialize instance variables when objects are created. It is always named __init__() and takes self as its first argument.
-
-
-
-onstructor is a special method that is used to initialize objects when they are created. The constructor method is always named __init__() and it takes at least one argument, self, which refers to the instance of the class that is being created.
-
-Here's an example of a simple Python class that has a constructor:
-```python
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-```
-In this example, the Person class has a constructor that takes two arguments, name and age. The constructor initializes two instance variables, self.name and self.age, with the values of the name and age arguments.
-
-When you create an instance of the Person class, you pass in values for the name and age arguments:
-```person1 = Person("Alice", 25)```
-
-This creates a new instance of the Person class, with self referring to the new instance. The constructor initializes the name instance variable to "Alice" and the age instance variable to 25.
-
-You can access these instance variables using dot notation:
-```python 
-print(person1.name)
-# Output: Alice
-
-print(person1.age)
-# Output: 25
-```
-
-
-
-What is true about Python class constructors? (Choose two.)
-A. there can be only one constructor in a Python class
-B. the constructor cannot be invoked directly under any circumstances
-C. the constructor cannot return a result other than None
-D. the constructor's first parameter must always be named self
-
-C is true because the constructor in Python is a special method named __init__() that is called when an object is created. By convention, it should not return anything other than None. If it does, a TypeError will be raised.
-
-D is true because the first parameter of a constructor in Python must always be named self. The self parameter refers to the instance of the class that is being created, and it is used to access the object's attributes and methods.
-
-Option A is false because although Python does not have built-in support for multiple constructors, it is possible to simulate them using default parameter values or class methods.
-
-Option B is false because the constructor can be invoked indirectly by creating an instance of the class, and it is the constructor that initializes the object's attributes.
-
-
----
-
-
-
-Python class constructors:
-
-A constructor is a special method in a class that is called when an object of that class is instantiated.
-In Python, the constructor method is called init().
-The constructor method can take parameters that are used to set the initial state of the object.
-If no constructor is defined for a class, Python provides a default constructor with no parameters.
-The constructor can also perform additional setup tasks that need to be done when the object is created.
-In summary, a Python class constructor is a special method that is used to initialize the object's attributes when the object is created. The constructor method is called automatically when an object is instantiated, and it can take parameters to set the initial state of the object.
-
-
-In Python, if a class's components have a name that starts with two underscores (__), they are considered to be "private" to the class. This means that they are intended to be used only within the class itself and are not intended to be accessed directly from outside the class.
-
-For example, consider the following Python class:
-
-```python 
-class MyClass:
-    def __init__(self):
-        self.__private_var = 10
-
-    def my_method(self):
-        print(self.__private_var)
-
-```
-
-In this example, the class MyClass has a private variable called __private_var, which is set to 10 in the constructor method (__init__). The class also has a method called my_method that prints the value of the private variable.
-
-
-In Python, mangling is used for class attributes that one does not want subclasses to use which are designated as such by giving them a name with two or more leading underscores and no more than one trailing underscore.
-
-The double underscore prefix in the variable name __private_var is known as "name mangling". This means that the variable is actually renamed to include the class name, making it more difficult to accidentally access the private variable from outside the class.
-
-For example, if we try to access the private variable from outside the class like this:
-
-```python 
-my_class = MyClass()
-print(my_class.__private_var)
-
-```
-
-We will get an AttributeError, because the variable has been renamed to _MyClass__private_var. However, we can still access the private variable using this modified name:
-
-```python 
-my_class = MyClass()
-print(my_class._MyClass__private_var)
-```
-Although technically possible, it is generally not recommended to access private variables or methods from outside the class. Instead, you should use public methods provided by the class to access or modify the private variables or methods.
-
-
-In the given code, __foo is a method that has been defined with a double underscore prefix, which makes it a private method. Private methods and attributes in Python are intended to be used within the class only and cannot be accessed directly from outside the class.
-
-The __foo method increments the var variable by 1 and returns the new value of var. It is an instance method, which means it operates on an instance of the class.
-
-To call the __foo method, you need to first create an instance of the class class, and then call the method on that instance. In the given code, an instance of class is created using o = class(). Then, the method is called using o.__foo().
-
-However, since the method is a private method, it is recommended to call it using a public method that wraps around it. This can be done by defining a public method with a different name that calls the private method inside the class. For example:
-
-```python 
-class MyClass:
-    var = 0 
-    
-    def __foo(self):
-        MyClass.var += 1
-        return MyClass.var 
-    
-    def public_foo(self):
-        return self.__foo()
-``` 
-
-In this modified code, public_foo is a public method that wraps around the private __foo method. To call the method, you can create an instance of MyClass and call the public_foo method on it, like this:
-```python 
-o = MyClass()
-print(o.public_foo())  # Output: 1
-print(o.public_foo())  # Output: 2
-```
-
-
-
-
-
-
-
-
-
----
-
-## lambda
-
-A lambda function is a small anonymous function.
-
-A lambda function can take any number of arguments, but can only have one expression.
-
-One time use function that you quyickly use it and never reference again
-
-Anonymous function:
-- we dont give it a name
-- we dont start it with def keyword
-- simply start with keyword lambda
--
-
-```python
-x = lambda a : a + 10
-print(x(5))
-```
+ 
 
 ---
 
@@ -2425,629 +2619,9 @@ print(x(5))
 - example:
 ![](./pngs/functions_filter01.png)
 
+ 
 
----
 
-# inheritance
-
-https://stackoverflow.com/questions/29214888/typeerror-cannot-create-a-consistent-method-resolution-order-mro
-
-
-
-
-```python
-the rule that when declaring a sub class which inherits from 2 (or more) classes which themselves are related through inheritance, the super class (class higher up in the inheritance hierarchy) needs to be passed after the sub class (class lower in the inheritance hierarchy). Using this rule lets analyze the answer choices:
-
-In
-
-class a3(A, B):
-    pass
-when declaring class 'a3' we are passing in class A BEFORE class B even though class A is the super class while B is the sub class. Therefore this option is incorrect (remember, sub classes come before super classes!).
-
-
-
-These options are correct:
-
-class a1(C, D):
-    pass
-class a2(D, C):
-    pass
-because we are declaring class 'a2' and 'a1' with classes D and C, there are not directly related in the inheritance chain so their order does not matter. Consider the inheritance chain has a human analogy:
-Grand parents -> Parents -> Children. It is a linear relation. Using this analogy, D will be the uncle/aunt while C will be the nephew/niece. The above rule does not apply to this 'non-linear' relation.
-
-
-
-class a4(B, C):
-    pass
-is incorrect because B comes before C even though B is the super class.
-
-
-
-class a5(A, D):
-    pass
-is incorrect because A is the super class and should come after D
-```
-
-
-
-
-
-
-
----
-
-# WEB SCRAPING
-
-- every page is unique so no one web scarping script will to it all
-- HTML contains information
-- CSS contains the styling
-- PYTHON uses tags to locate specific info from a page
-  - using *beautifulsoup* and libraris to format it internaly
-- www.toscrape.com is website specificaly designed to practice web scraping
-
-
-```python
-#
-# install beautifulsoup and libraries
-#
-pip3 install requests
-pip3 install lxml
-pip3 install bs4
-```
-- now right click the page > inspect > choose which class call or other calls you want to use
-
-```python
-#
-# sample scrapping
-#
-import requests
-result = requests.get("http://www.example.com")
-
-# in the background the requests library goes to the url and gets response from that url
-# so now when we check its type:
-type(result)
-Out[1]: requests.models.Response
-
-# and now we can take the result.text and the output is plain text,
-# storeg in python string,
-Out[2]: '<!doctype html>\n<html>\n<head>\n    <title>Example Domain</title>\n\n    <meta charset="utf-8" />\n    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <style type="text/css">\n    body {\n        background-color: #f0f0f2;\n        margin: 0;\n        padding: 0;\n        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;\n        \n    }\n    div {\n        width: 600px;\n        margin: 5em auto;\n        padding: 2em;\n        background-color: #fdfdff;\n        border-radius: 0.5em;\n        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);\n    }\n    a:link, a:visited {\n        color: #38488f;\n        text-decoration: none;\n    }\n    @media (max-width: 700px) {\n        div {\n            margin: 0 auto;\n            width: auto;\n        }\n    }\n    </style>    \n</head>\n\n<body>\n<div>\n    <h1>Example Domain</h1>\n    <p>This domain is for use in illustrative examples in documents. You may use this\n    domain in literature without prior coordination or asking for permission.</p>\n    <p><a href="https://www.iana.org/domains/example">More information...</a></p>\n</div>\n</body>\n</html>\n'
-# yes just a string, so now to parse thorught this we need beautiful soup
-import bs4
-soup = bs4.beautifulSoup(result.text,"lxml")
-# and now when we call soup the format is as on the webstie
-In [7]: soup
-Out[7]:
-<!DOCTYPE html>
-<html>
-<head>
-<title>Example Domain</title>
-<meta charset="utf-8"/>
-<meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<style type="text/css">
-    body {
-        background-color: #f0f0f2;
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-    }
-    div {
-        width: 600px;
-        margin: 5em auto;
-        padding: 2em;
-        background-color: #fdfdff;
-        border-radius: 0.5em;
-        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
-    }
-    a:link, a:visited {
-        color: #38488f;
-        text-decoration: none;
-    }
-    @media (max-width: 700px) {
-        div {
-            margin: 0 auto;
-            width: auto;
-        }
-    }
-    </style>
-</head>
-<body>
-<div>
-<h1>Example Domain</h1>
-<p>This domain is for use in illustrative examples in documents. You may use this
-    domain in literature without prior coordination or asking for permission.</p>
-<p><a href="https://www.iana.org/domains/example">More information...</a></p>
-</div>
-</body>
-</html>
-
-In [8]:
-# and to grab thigs from html document use soup.select()
-soup.select('title')
-# by default it returns a list, because you can have more than one value returned
-soup.select('title')
-Out[9]: [<title>Example Domain</title>]
-# say all paragrafs which are <p> in html
-soup.select('p')
-[<p>This domain is for use in illustrative examples in documents. You may use this
-     domain in literature without prior coordination or asking for permission.</p>,
- <p><a href="https://www.iana.org/domains/example">More information...</a></p>]
-# and now to get only text without the tags:
-# - we select an item from list, remember its a list
-# - and than we use getText() method which returns:
-In [13]: soup.select('p')
-    ...:
-Out[13]:
-[<p>This domain is for use in illustrative examples in documents. You may use this
-     domain in literature without prior coordination or asking for permission.</p>,
- <p><a href="https://www.iana.org/domains/example">More information...</a></p>]
-
-In [14]: soup.select('p')[0].getText()
-    ...:
-Out[14]: 'This domain is for use in illustrative examples in documents. You may use this\n    domain in literature without prior coordination or asking for permission.'
-
-In [15]:
-
-```
-![](./pngs/web_scrapping01.png)
-
-```python
-#
-# grab a page (and later parse what data you want)
-#
-import requests
-import bs4
-
-resource = requests.get("https://en.wikipedia.org/wiki/Linksys_WRT54G_series")
-soup = bs4.BeautifulSoup(resource.text,"lxml")
-# because we want to get whole class we need to select .'class'
-soup.select('.toc')
-
-[<div aria-labelledby="mw-toc-heading" class="toc" id="toc" role="navigation"><input class="toctogglecheckbox" id="toctogglecheckbox" role="button" style="display:none" type="checkbox"/><div class="toctitle" dir="ltr" lang="en"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
- <ul>
- <li class="toclevel-1 tocsection-1"><a href="#Hardware_and_revisions"><span class="tocnumber">1</span> <span class="toctext">Hardware and revisions</span></a>
- <ul>
- <li class="toclevel-2 tocsection-2"><a href="#WRT54G"><span class="tocnumber">1.1</span> <span class="toctext">WRT54G</span></a></li>
- <li class="toclevel-2 tocsection-3"><a href="#WRT54GS"><span class="tocnumber">1.2</span> <span class="toctext">WRT54GS</span></a></li>
- <li class="toclevel-2 tocsection-4"><a href="#WRT54GL"><span class="tocnumber">1.3</span> <span class="toctext">WRT54GL</span></a></li>
- <li class="toclevel-2 tocsection-5"><a href="#WRTSL54GS"><span class="tocnumber">1.4</span> <span class="toctext">WRTSL54GS</span></a></li>
- <li class="toclevel-2 tocsection-6"><a href="#WRT54GX"><span class="tocnumber">1.5</span> <span class="toctext">WRT54GX</span></a></li>
- <li class="toclevel-2 tocsection-7"><a href="#WRT54GP2_and_WRTP54G"><span class="tocnumber">1.6</span> <span class="toctext">WRT54GP2 and WRTP54G</span></a></li>
- <li class="toclevel-2 tocsection-8"><a href="#WRT54GX2"><span class="tocnumber">1.7</span> <span class="toctext">WRT54GX2</span></a></li>
- <li class="toclevel-2 tocsection-9"><a href="#WRT54GX4"><span class="tocnumber">1.8</span> <span class="toctext">WRT54GX4</span></a></li>
- <li class="toclevel-2 tocsection-10"><a href="#WRT51AB"><span class="tocnumber">1.9</span> <span class="toctext">WRT51AB</span></a></li>
- <li class="toclevel-2 tocsection-11"><a href="#WRT55AG"><span class="tocnumber">1.10</span> <span class="toctext">WRT55AG</span></a></li>
- <li class="toclevel-2 tocsection-12"><a href="#WTR54GS"><span class="tocnumber">1.11</span> <span class="toctext">WTR54GS</span></a></li>
- <li class="toclevel-2 tocsection-13"><a href="#WRT54G2"><span class="tocnumber">1.12</span> <span class="toctext">WRT54G2</span></a></li>
- <li class="toclevel-2 tocsection-14"><a href="#WRT54GS2"><span class="tocnumber">1.13</span> <span class="toctext">WRT54GS2</span></a></li>
- <li class="toclevel-2 tocsection-15"><a href="#WRT54GC"><span class="tocnumber">1.14</span> <span class="toctext">WRT54GC</span></a></li>
- <li class="toclevel-2 tocsection-16"><a href="#WRT54G3G/WRT54G3GV2_Mobile_Broadband_router"><span class="tocnumber">1.15</span> <span class="toctext">WRT54G3G/WRT54G3GV2 Mobile Broadband router</span></a></li>
- <li class="toclevel-2 tocsection-17"><a href="#WRT54G-TM,_WRTU54G-TM,_and_WRTU54GV2-TM"><span class="tocnumber">1.16</span> <span class="toctext">WRT54G-TM, WRTU54G-TM, and WRTU54GV2-TM</span></a></li>
- <li class="toclevel-2 tocsection-18"><a href="#WRT54G-RG"><span class="tocnumber">1.17</span> <span class="toctext">WRT54G-RG</span></a></li>
- <li class="toclevel-2 tocsection-19"><a href="#WRT54GH"><span class="tocnumber">1.18</span> <span class="toctext">WRT54GH</span></a></li>
- </ul>
- </li>
- <li class="toclevel-1 tocsection-20"><a href="#Third-party_firmware_projects"><span class="tocnumber">2</span> <span class="toctext">Third-party firmware projects</span></a></li>
- <li class="toclevel-1 tocsection-21"><a href="#Hardware_versions_and_firmware_compatibility"><span class="tocnumber">3</span> <span class="toctext">Hardware versions and firmware compatibility</span></a></li>
- <li class="toclevel-1 tocsection-22"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
- <li class="toclevel-1 tocsection-23"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
- <li class="toclevel-1 tocsection-24"><a href="#Further_reading"><span class="tocnumber">6</span> <span class="toctext">Further reading</span></a></li>
- <li class="toclevel-1 tocsection-25"><a href="#External_links"><span class="tocnumber">7</span> <span class="toctext">External links</span></a></li>
- </ul>
- </div>]
-```
-
-![](./pngs/web_scrapping02.png)
-
-```python
-#
-# and now make it look better,
-# - get rid of the tags with method .text
-#
-for item in soup.select('.toc'):
-  print(item.text)
-
-for item in soup.select('.toc'):
-   print(item.text)
-
-Contents
-
-1 Hardware and revisions
-
-1.1 WRT54G
-1.2 WRT54GS
-1.3 WRT54GL
-1.4 WRTSL54GS
-1.5 WRT54GX
-1.6 WRT54GP2 and WRTP54G
-1.7 WRT54GX2
-1.8 WRT54GX4
-1.9 WRT51AB
-1.10 WRT55AG
-1.11 WTR54GS
-1.12 WRT54G2
-1.13 WRT54GS2
-1.14 WRT54GC
-1.15 WRT54G3G/WRT54G3GV2 Mobile Broadband router
-1.16 WRT54G-TM, WRTU54G-TM, and WRTU54GV2-TM
-1.17 WRT54G-RG
-1.18 WRT54GH
-
-
-2 Third-party firmware projects
-3 Hardware versions and firmware compatibility
-4 See also
-5 References
-6 Further reading
-7 External links
-```
-
-## webscrapping images
-
-- images are usualy and *img* or *jpeg* or *png* they easy to find
-- and those are html tags so simple soup.select('img') might work:
-
-```python
-link = requests.get("https://4kwallpapers.com/")
-soup = bs4.BeautifulSoup(link.text,'lxml')
-soup.select('img')
-# list of all IMGs from the website:
- <img alt="Bugatti W16 Mistral, Sports cars, Hypercars, Roadster, Black cars" height="225" itemprop="thumbnail" src="https://4kwallpapers.com/images/walls/thumbs/9991.jpg" srcset="https://4kwallpapers.com/images/walls/thumbs_2t/9991.jpg 2.5x" width="400"/>,
-<img alt="Phones and Mobiles" height="225" loading="lazy" src="https://4kwallpapers.com/images/walls/packs/99.jpg" width="400"/>,
-<img alt="Playstore" height="60" loading="lazy" src="/images/common/playstore.png" width="200"/>]
-# SRC is basicaly what we are looking for, source of the image.
-# THUMBNAIL or THUMBIMAGE is a class of the images, in case you want to narow down search
-# bacause its a class! we selet it with .class .thumbnail
-soup.select('.thumbnail') # to nie dziawla na tej stronie...
-
-# say we want to take 10th item from img list:
-soup.select('img')[10]
-
-Out[30]: <img alt="Lake Tahoe, Sierra Nevada mountains, Rocks, Landscape, 5K" height="225" itemprop="thumbnail" loading="lazy" src="https://4kwallpapers.com/images/walls/thumbs/9795.jpg" srcset="https://4kwallpapers.com/images/walls/thumbs_2t/9795.jpg 2.5x" width="400"/>
-# assign it to variable
-mypic = soup.select('img')[10]
-
-mypic
-Out[32]: <img alt="Lake Tahoe, Sierra Nevada mountains, Rocks, Landscape, 5K" height="225" itemprop="thumbnail" loading="lazy" src="https://4kwallpapers.com/images/walls/thumbs/9795.jpg" srcset="https://4kwallpapers.com/images/walls/thumbs_2t/9795.jpg 2.5x" width="400"/>
-# and now we can call the source:
-mypic['src']
-Out[33]: 'https://4kwallpapers.com/images/walls/thumbs/9795.jpg'
-
-# we can assign new variable to the image link:
-mypiclink = requests.get('https://4kwallpapers.com/images/walls/thumbs/9795.jpg')
-
-mypiclink
-mypiclink.content     # the binary of the image :D
-# and now we save it, remember to save in same format
-# so open new file (with name of your choice) > in writeBinary mode (so its ready we feed it with content)
-f = open('mynewpic.jpg', 'wb')
-f.write(mypiclink.content)
-f.close()
-#now its saved locally !
-In [39]: pwd
-Out[39]: '/home/andre/Python'
-
-In [40]: ls
-__init__.py  level1/  main.py  mynewpic.jpg  one.py  __pycache__/  two.py
-```
-
-
-
-# books and quotes
-
-- https://toscrape.com/
-- free to learn web scraping ;)
-- web scaping over multiple pages, grab multiple items
-
-```python
-#
-#
-#
-import bs4
-import requests
-# example webpage:
-https://toscrape.com/
-# moving between pages:
-https://books.toscrape.com/catalogue/page-2.html, https://books.toscrape.com/catalogue/page-3.html
-
-# using dat format method, which is curly braces {} instead of number:
-base_url = 'https://books.toscrape.com/catalogue/page-{}.html'
-# with dot 20 the base url will autoamticaly be 20
-base_url.format('20')
-Out[3]: 'https://books.toscrape.com/catalogue/page-20.html'
-# same as:
-myfavpage = 10
-base_url.format(myfavpage)
-Out[4]: 'https://books.toscrape.com/catalogue/page-10.html'
-
-# or the range:
-for i in range(1,11):
-     print(base_url.format(i))
-
-https://books.toscrape.com/catalogue/page-1.html
-https://books.toscrape.com/catalogue/page-2.html
-https://books.toscrape.com/catalogue/page-3.html
-https://books.toscrape.com/catalogue/page-4.html
-https://books.toscrape.com/catalogue/page-5.html
-https://books.toscrape.com/catalogue/page-6.html
-https://books.toscrape.com/catalogue/page-7.html
-https://books.toscrape.com/catalogue/page-8.html
-https://books.toscrape.com/catalogue/page-9.html
-https://books.toscrape.com/catalogue/page-10.html
-
-#
-# now find all books with rating 2
-#
-# - look for a name of the class that every rating 2 book has, that be:
-# class: "star-rating Two"
-#
-# 1) take url
-res = requests.get(base_url.format(1))
-# 2) turn it into beautiful soup
-soup = bs4.BeautifulSoup(res.text,'lxml')
-# 3) select only books, here they are called "product_pod", and they are a class, hence .
-soup.select(".product_pod")
-# and this gives us all 20 products from this site 1, and if ou check how many items is on the site ? yes - 20
-In stock
-
-</p>
-<form>
-<button class="btn btn-primary btn-block" data-loading-text="Adding..." type="submit">Add to basket</button>
-</form>
-</div>
-</article>,
-<article class="product_pod">
-<div class="image_container">
-<a href="its-only-the-himalayas_981/index.html"><img alt="It's Only the Himalayas" class="thumbnail" src="../media/cache/27/a5/27a53d0bb95bdd88288eaf66c9230d7e.jpg"/></a>
-</div>
-<p class="star-rating Two">
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-</p>
-<h3><a href="its-only-the-himalayas_981/index.html" title="It's Only the Himalayas">It's Only the Himalayas</a></h3>
-<div class="product_price">
-<p class="price_color">Â£45.17</p>
-<p class="instock availability">
-<i class="icon-ok"></i>
-
-In stock
-
-</p>
-<form>
-<button class="btn btn-primary btn-block" data-loading-text="Adding..." type="submit">Add to basket</button>
-</form>
-</div>
-</article>]
-#
-len(soup.select(".product_pod"))
-Out[12]: 20
-
-# if the class name has empty space in beautifulsoup you use .
-# EXAMPLE: on the page its called: "star-rating Three" == beautifulSoup "star-rating.Three"
-# assign all 20 items to check start
-check_start = soup.select(".product_pod")
-# now get first item:
-check_start[0].select(".star-rating.Three")
-Out[17]:
-[<p class="star-rating Three">
- <i class="icon-star"></i>
- <i class="icon-star"></i>
- <i class="icon-star"></i>
- <i class="icon-star"></i>
- <i class="icon-star"></i>
- </p>]
-
-# GETTING TITLE:
-# - example how the html code looks like, and we looking for title:
-</p>
-<form>
-<button class="btn btn-primary btn-block" data-loading-text="Adding..." type="submit">Add to basket</button>
-</form>
-</div>
-</article>,
-<article class="product_pod">
-<div class="image_container">
-<a href="its-only-the-himalayas_981/index.html"><img alt="It's Only the Himalayas" class="thumbnail" src="../media/cache/27/a5/27a53d0bb95bdd88288eaf66c9230d7e.jpg"/></a>
-</div>
-<p class="star-rating Two">
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-<i class="icon-star"></i>
-</p>
-<h3><a href="its-only-the-himalayas_981/index.html" title="It's Only the Himalayas">It's Only the Himalayas</a></h3>
-# title is included in <a href so we looking for an "a"
-<div class="product_price">
-<p class="p
-
-# first, assign first item from check_start to example:
-example = check_start[0]
-# now working on that one particular example we can get .select() function working
-example.select('a')
-[<a href="a-light-in-the-attic_1000/index.html"><img alt="A Light in the Attic" class="thumbnail" src="../media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"/></a>,
- <a href="a-light-in-the-attic_1000/index.html" title="A Light in the Attic">A Light in the ...</a>]
-# a href has two reurns here 1-is an image 2-is title
-
-# thats why we gettig item 2 czyli indext 1 and grabbing 'title' - yes in beautifulSoup it has tags...
-example.select('a')[1]['title']
-'A Light in the Attic'
-```
-
-- WHOLE EXAMPLE IN ONE GO:
-
-```python3
-In [39]: # first we declare empty list
-
-In [40]: two_start_titles = []
-
-In [41]: # the loop to go from page 1 to page 50
-
-In [42]: for n in range(1,51):
-    ...:     # setting up scrape url with that number
-    ...:     scrape_url = base_url.format(n)
-    ...:     # now make the request with url from above
-    ...:     res = requests.get(scrape_url)
-    ...:
-    ...:     # call soup and lxml as engine:
-    ...:     soup = bs4.BeautifulSoup(res.text,'lxml')
-    ...:     # recall list of books:
-    ...:     books = soup.select(".product_pod")
-    ...:
-    ...:     # now filter out through the books
-    ...:     for book in books:
-    ...:         # check if two stars:
-    ...:         if 'star-rating Two' in str(book):
-    ...:             # so if it is there we grab the title:
-    ...:             book_title = book.select('a')[1]['title']
-    ...:             # and append book title to two star titles:
-    ...:             two_start_titles.append(book_title)
-    ...:
-    ...:
-
-In [43]: two_start_titles
-Out[43]:
-['Starving Hearts (Triangular Trade Trilogy, #1)',
- 'Libertarianism for Beginners',
- "It's Only the Himalayas",
- 'How Music Works',
- 'Maude (1883-1993):She Grew Up with the country',
- "You can't bury them all: Poems",
- 'Reasons to Stay Alive',
- 'Without Borders (Wanderlove #1)',
- 'Soul Reader',
- 'Security',
- 'Saga, Volume 5 (Saga (Collected Editions) #5)',
- 'Reskilling America: Learning to Labor in the Twenty-First Century',
- 'Political Suicide: Missteps, Peccadilloes, Bad Calls, Backroom Hijinx, Sordid Pasts, Rotten Breaks, and Just Plain Dumb Mistakes in the Annals of American Politics',
-```
-
-- and here too:
-
-![](./pngs/web_scrapping03.png)
-
-
----
-
-#  webscraping project
-- price comparison
-- reddit scrapping for posts about ?
-  - crytpo ?
-  - cos innego ?
-  - hacker news ?
-- news from few pages ?
-- job search portal
-  - glassdoor
-  - linked in
-  - jobs.ie
-- security:
-  - download blacklisted IPs and put them on router ?
-  - https://www.abuseipdb.com/
-  - https://pgl.yoyo.org/as/iplist.php?ipformat=iptables
-  -
-
-```python
-#
-#
-#
-import requests
-import bs4
-website = requests.get('https://pgl.yoyo.org/as/iplist.php?ipformat=iptables')
-soup = bs4.BeautifulSoup(website.text,'lxml')
-
-
-# linux
-wget https://pgl.yoyo.org/as/iplist.php?ipformat=iptables -O iplist.txt
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-# BeautifulSoup program 1
-
-```python
-#
-#
-# imports
-import requests
-import bs4
-# link
-url = 'https://quotes.toscrape.com/'
-request = requests.get(url)
-# get all authors from first page, there are duplicate authors so we use SET instead of LIST
-soup = bs4.BeautifulSoup(request.text,'lxml')
-# now, figure out what is the class call to get names:
-soup.select('.author')
-# because we want unique, we set empty set first
-authors = set()
-for name in soup.select('.author'):
-  authors.add(name.text)
-#
-#
-# next get all quotes from first page,
-# - this is very similar so the loop be similar to above one:
-# - class for quotes is called text
-quotes = []
-for quote in soup.select('.text'):
-  quotes.append(quote.text)
-#
-#
-#
-# now, about multipages:
-# - base url:
-url = 'https://quotes.toscrape.com/page/'
-# - adding pages at the end:
-authors = set()
-for page in range(1,10):
-  # can not add int to string so convert page number as string
-  page_url = url+str(page)
-  # now make request for that page
-  res = requests.get(page_url)
-  soup = bs4.BeautifulSoup(res.text,'lxml')
-
-  # so now from all that pages getting names of authors, same loop:
-  for name in soup.select('.author'):
-    authors.add(name.text)
-#
-#
-#
-# NOW THE SAME WITH WHILE LOOP IF WE DONT KNOW HOW MANY PAGES IS THERE:
-# - we knkow that when quoting page that is not found the website displays "No quotes found!"-use that
-page_still_valid = True
-authors = set()
-page = 1
-
-while page_still_valid:
-
-  page_url = url+str(page)
-
-  res = requests.get(page_url)
-
-  if "No quotes found!" in res.text:
-    break
-
-  soup = bs4.BeautifulSoup(res.text,'lxml')
-
-  for name in soup.select('.author'):
-    authors.add(name.text)
-
-  page = page+1
-```
 
 
 
@@ -3138,267 +2712,4 @@ data_lines = list(csv_data)
 ```
 
 
-
-
-
-
-
----
-
-# PROJECT
-
-the flow of project is simple (the code can be difficult, challenging, can do a lot of stuff in background) the idea is usualy something like this:
-
-1) user input
-
-2) update variables with what user has input
-
-3) new visualization , new output
-
-
-
-
-
-
-
-
-
-
-![](./pngs/project1game01.png)
-
-
-step 2 - player input:
-
-![](./pngs/project1game02.png)
-
-
-step 3 - takes in board list object , a marker X or O and desired positoin number 1-9 and assigns it to the board
-
-![](./pngs/project1game03.png)
-
-step 4 - function that will take board and mark X or O and then checks if marker won (if we have three of teh same in one row and column and diagonal  )
-
-
-step 4 - win check
-
-```python
-def win_check(board, mark):
-
-  # check if game is won ?
-
-  # to win we need to have three accross with same marker in all ROWS
-  # if we have this case that all marks are the same we know somebody won
-  return ((board[1] == mark and board[2] == mark and board[3] == mark ) or
-  # we have to rerutn boolean true or false
-  # and yes we can place all the above inside the parentisis and have OR statement at the end
-  # now checking next row
-  (board[4] == mark and board[5] == mark and board[6] == mark ) or
-  # the same thing but with different code would be:
-  (board[7] == board[8] == board[9] == mark ) or
-
-  # than check if same marker is all three COLUMNS
-  (board[3] == mark and board[6] == mark and board[9] == mark ) or
-  (board[2] == mark and board[5] == mark and board[8] == mark ) or
-  (board[1] == mark and board[4] == mark and board[7] == mark ) or
-  # and of course two DIAGONALS
-  (board[7] == mark and board[5] == mark and board[3] == mark ) or
-  (board[9] == mark and board[5] == mark and board[1] == mark ))
-
-  #  
-
-display_board(test_board)
-win_check(test_board, 'X')
-
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-# and this is the whole code for project 1
-
-ref: https://github.com/Pierian-Data/Complete-Python-3-Bootcamp
-
-```python
-#
-# Step 1: Write a function that can print out a board.
-# Set up your board as a list, where each index 1-9 corresponds with a number on a number pad, so you get a 3 by 3 board representation.
-#
-
-from IPython.display import clear_output
-
-def display_board(board):
-    clear_output()  
-    # have to clear output because running dispaly_board multiple times will just display all the boards
-
-    print('   |   |')
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
-    print('   |   |')
-
-# TEST Step 1: run your function on a test version of the board list, and make adjustments as necessary
-
-test_board = ['#','X','O','X','O','X','O','X','O','X']
-display_board(test_board)
-
-
-# Step 2: Write a function that can take in a player input and assign their marker as 'X' or 'O'.
-# using while loops to continually ask until you get a correct answer.
-def player_input():
-    marker = ''
-
-    while not (marker == 'X' or marker == 'O'):
-    # while marker is NOT equal to X AND NOT equal to O
-        marker = input('Player 1: Do you want to be X or O? ').upper()
-        # using upper() function so the choice is alsways capital letter no matter what user provides
-
-    if marker == 'X':
-    # output here is in form of TUPLE, with Player 1 marker, player 2:
-        return ('X', 'O')
-    else:
-        return ('O', 'X')
-
-# TEST Step 2: run the function to make sure it returns the desired output
-player_input()
-
-# Step 3: Write a function that takes in the board list object, a marker ('X' or 'O'), and a desired position (number 1-9) and assigns it to the board.
-def place_marker(board, marker, position):
-    board[position] = marker
-
-
-# TEST Step 3: run the place marker function using test parameters and display the modified board
-place_marker(test_board,'$',8)
-display_board(test_board)
-
-# Step 4: Write a function that takes in a board and checks to see if someone has won.
-def win_check(board,mark):
-  # what does it mean to win ?
-  # means we need to have same markers in a row, horizontly of diagnoal so they all must equal the same thing:
-    return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
-    # return always returns boolean so this return () will return eiter True or False
-    (board[4] == mark and board[5] == mark and board[6] == mark) or # across the middle
-    (board[1] == mark and board[2] == mark and board[3] == mark) or # across the bottom
-    (board[7] == mark and board[4] == mark and board[1] == mark) or # down the middle
-    (board[8] == mark and board[5] == mark and board[2] == mark) or # down the middle
-    (board[9] == mark and board[6] == mark and board[3] == mark) or # down the right side
-    (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
-    (board[9] == mark and board[5] == mark and board[1] == mark)) # diagonal
-
-
-# TEST Step 4: run the win_check function against our test_board - it should return True
-win_check(test_board,'X')
-
-
-# Step 5: Write a function that uses the random module to randomly decide which player goes first. You may want to lookup random.randint() Return a string of which player went first.
-import random
-
-def choose_first():
-# randomint(options to random will pick from, 0 or 1)
-    if random.randint(0, 1) == 0:
-        return 'Player 2'
-    else:
-        return 'Player 1'
-
-
-# Step 6: Write a function that returns a boolean indicating whether a space on the board is freely available.
-def space_check(board, position):
-# get the board at that position and check if its empty string:
-    return board[position] == ' '
-
-
- # Step 7: Write a function that checks if the board is full and returns a boolean value. True if full, False otherwise.
-def full_board_check(board):
-     for i in range(1,10):
-         if space_check(board, i):
-         # double negative here because we are checking 1) if space is at the i and if there is we return false to our check (if the board is full check)
-             return False
-     # board is full when we return true          
-     return True
-
-# Step 8: Write a function that asks for a player's next position (as a number 1-9) and then uses the function from step 6 to check if its a free position. If it is, then return the position for later use.
-def player_choice(board):
-    position = 0
-    # while position in NOT our available position or NOT FREE, we ask player for postion
-    while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board, position):
-        position = int(input('Choose your next position: (1-9) '))
-
-    return position
-
-
-# Step 9: Write a function that asks the player if they want to play again and returns a boolean True if they do want to play again.
-def replay():
-
-    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
-
-# Step 10: whole game logic here
-#
-#
-
-print('Welcome to Tic Tac Toe!')
-
-# first we need while loop to keep playing the game
-# so while true we play the game:
-while True:
-    # in order to play the game we need to set the boards first
-    # setting board as 10 empty list
-    theBoard = [' '] * 10
-
-    # what player choose here
-    player1_marker, player2_marker = player_input()
-
-    # choose who goes first:
-    turn = choose_first()
-    print(turn + ' will go first.')
-
-    # ready to play Yes or No
-    play_game = input('Are you ready to play? Enter Yes or No.')
-
-    if play_game.lower()[0] == 'y':
-        game_on = True
-    else:
-        game_on = False
-
-    while game_on:
-        if turn == 'Player 1':
-            # Player1's turn.
-            # show the board to player and than let him choose position
-            display_board(theBoard)
-            position = player_choice(theBoard)
-            # take the player his marker and place it on the position he chose:
-            place_marker(theBoard, player1_marker, position)
-
-            # now when they have choosen the marker we need to test if they won             
-            if win_check(theBoard, player1_marker):
-                display_board(theBoard)
-                print('Congratulations! You have won the game!')
-                # and if its false it means that player WON  
-                game_on = False
-            # else we check if board is full and no one won:
-            else:
-                if full_board_check(theBoard):
-                    display_board(theBoard)
-                    print('The game is a draw!')
-                    break
-                else:
-                    turn = 'Player 2'
-
-        else:
-            # Player2's turn.
-
-            display_board(theBoard)
-            position = player_choice(t
+ 
