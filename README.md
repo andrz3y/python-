@@ -23,6 +23,14 @@
 # ASCII vs UTF-8
 
 ```yaml
+ASCII is a subset of Unicode.
+
+Unicode is a character encoding standard that can represent almost all characters from all writing systems in the world. It includes a vast collection of characters, symbols, and glyphs that can be used to represent text in any language.
+
+ASCII (American Standard Code for Information Interchange) is a subset of Unicode, which only includes 128 characters that represent the most common Latin letters, digits, and punctuation marks used in the English language.
+
+Unicode builds upon ASCII and includes additional characters from various scripts, including Latin, Greek, Cyrillic, Arabic, Hebrew, Chinese, Japanese, and many others. So, while ASCII only includes a small subset of characters, Unicode includes all ASCII characters and many more.
+
 UTF-8 is an abbreviation for Unicode Transformation Format — 8 bits.
 
 The “8” here means 8-bit blocks are used to represent a character.
@@ -101,9 +109,180 @@ __setattr__:
 # It allows you to define custom behavior for setting attributes.
 ```
 
+<div style="page-break-after: always;"></div>
+
+--- 
+
+
+<div style="page-break-after: always;"></div>
+
+--- 
+
+# UNDERSCORES: 
+
+Underscores are used in Python to indicate various naming conventions and to give special meanings to certain variables and methods.
+
+
+1) **Single leading underscore:** 
+    - This convention is used to indicate that a variable or method is intended to be used as a **private member of a class or module**. 
+    - For example, ```_my_private_variable``` or ```_my_private_method()```. 
+    - However, this is just a convention and doesn't actually prevent other code from accessing the variable or method.
+
+2) **Single trailing underscore:**
+    - This convention is used to avoid naming conflicts with Python keywords or built-in functions. 
+    - For example, ```class_``` or ```print_```.
+
+3) **Double leading underscore:**
+    - This convention is used to implement **name mangling in Python**
+    - Name mangling is a technique used to make a variable or method private by adding the class name to its name to avoid naming conflicts. 
+    -  For example, ```__my_private_variable``` will be converted to ```_classname__my_private_variable``` when accessed outside the class.
+    - This makes it harder to accidentally modify or access the variable or method from outside the class. 
+
+4) **Double leading and trailing underscore** 
+    - This convention is used for special methods or attributes in Python. 
+    - These methods have a special meaning in Python and are used to implement specific behaviors in classes. 
+    - For example, ```__init__()``` is a special method used to **initialize an instance** of a class, 
+    - and ```__doc__``` is a special attribute used to access the documentation string of a class or function.
+
+5) **Single underscore**
+    - This convention is used as a throwaway variable, indicating that the variable is not going to be used. 
+    - For example, ```_, x = some_function()```, where the first value returned by some_function() is not needed.
+    -  the single underscore character (_) can also be used as a *variable name or as a placeholder for unused variables or values* for example:  
+
+<div style="page-break-after: always;"></div>
+
+```python 
+# the underscore is used as a placeholder variable. 
+for _ in range(10):
+    # do something
+# it is often used when you don't need the value of the current iteration in a loop. Since the underscore variable is not used within the loop body, 
+# it tells the reader that the value is not important and can be ignored.
+
+# in normal loop we iterate 10 times, and value of i is used for something: 
+for i in range(10):
+    print(i)
+   ...: 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+# but once you place underscore i is not used: 
+for _ in range(10):
+    print(i)
+   ...: 
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+
+```
+
+
+<div style="page-break-after: always;"></div>
+
+--- 
+
+# __init__.py
+
+- key .py file is ```__init__```.py
+- this file marks directory and lets python know that all .py scripts should be threated as a package of modules to import
+- so if we want to have more, multiple directories we need this file to be in every of them
+- example above where all files in same dir but what if we have subdirectories ?
+  - in each subdirectory we need ```__inint__``` file
+
+Python defines two types of packages, regular packages and namespace packages.
+
+Regular packages are traditional packages as they existed in Python 3.2 and earlier.
+A regular package is typically implemented as a directory containing an ```__init__```.py file.
+
+When a regular package is imported, this ```__init__```.py file is implicitly executed, and the objects it defines are bound to names in the package’s namespace.
+
+The ```__init__```.py file can contain the same Python code that any other module can contain, and Python will add some additional attributes to the module when it is imported.
+
+![](./pngs/modules01.png)
+
+
+<div style="page-break-after: always;"></div>
+
+
+- same like directory structure in linux:   
+  - ```directory/file BUT here MODULE.PACKAGE```
+
+![](./pngs/modules02.png)
 
 
 
+<div style="page-break-after: always;"></div>
+
+---
+
+# ```__name__ __main__```
+
+- sometimes when you import from module you would like to know wheter a module function is being used as import
+- or if you are using the oryginal .py file of that module
+- ```if __name__ == __main__``` is usualy at the end of larger script files
+  - it is a check if we are running the script
+  - it means you run the file, the file that has not been imported
+  - ```if __name__ == "__main__"``` means we runnign whole script, if python can find the name of the file lol
+
+![](./pngs/modules03.png)
+
+
+In Python, ```__main__``` is the name of the default module that is executed when a Python script is run from the command line. 
+
+It is also the name of the top-level script environment that Python creates when a module is run as the main program.
+
+When a Python script is run, the interpreter first initializes the environment and sets up some special variables, including ```__name__```. If the script is being run as the main program, ```__name__``` is set to the string "```__main__```". If the script is being imported as a module into another script, ```__name__``` is set to the name of the module.
+
+This distinction is useful for writing scripts that can be used both as stand-alone programs and as modules in larger programs. By checking the value of ```__name__```, a script can determine whether it is being run as the main program or imported as a module, and can take different actions in each case.
+
+For example, a script might define a function or class that can be imported and used by other scripts, but also include some code at the bottom of the script that runs a test of the function or class if the script is being run as the main program. In this case, the test code would be enclosed in an if ```__name__ == "__main__```": block, so that it is only executed if the script is being run directly and not when it is imported as a module.
+
+
+
+
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# __pycache__
+
+A cache is something that keeps a copy of stuff in case you need it again, to save you having to go back to the original  
+
+When you run a program in Python, the interpreter compiles it to bytecode first (this is an oversimplification) and stores it in the __pycache__ folder.
+
+If you look in there you will find a bunch of files sharing the names of the .py files in your project's folder, only their extensions will be either .pyc or .pyo. These are bytecode-compiled and optimized bytecode-compiled versions of your program's files, respectively.
+
+As a programmer, you can largely just ignore it... All it does is make your program start a little faster. When your scripts change, they will be recompiled, and if you delete the files or the whole folder and run your program again, they will reappear (unless you specifically suppress that behavior).
+
+---
+
+
+
+
+
+
+
+
+
+
+<div style="page-break-after: always;"></div>
+
+---
 
 # Python lexis 
 
@@ -137,10 +316,38 @@ In addition to the built-in vocabulary, Python also allows users to define their
 # KEYWORDS TO REMEMBER: 
 
 
+### Abstraction 
+Abstraction is the process of hiding the real implementation of a function from the user and emphasizing only on how to use the function. 
+
+### encapsuation 
+Encapsulation is restricting access to methods and variables based on their requirement.
+
+- When a variable name is defined starting with ```__``` (2 underscores), it is a private variable. 
+- private variable and its value cannot be accessed nor set outside the class.
+- This concept of public and private variables is related to encapsulation. 
+
+
+
+
+### Polymorphism
+Polymorphism lets us define methods in the child class that have the same name as the methods in the parent class. 
+
+### inheritance
+Iinheritance, the child class inherits the methods from the parent class. 
+
+
+
+
+<div style="page-break-after: always;"></div>
+
 ## __bases __ 
 
  
-```__bases__``` property is a special attribute in Python that is used to access the tuple of base classes of a class. When you create a new class in Python, you can specify one or more base classes from which your new class inherits attributes and methods. The ```__bases__``` attribute provides a way to access the tuple of base classes that your class inherits from.
+```__bases__``` property is a special attribute in Python that is used to access the tuple of base classes of a class. When you create a new class in Python, you can specify one or more base classes from which your new class inherits attributes and methods. The ```__bases__``` attribute provides a way to access the tuple of base classes that your class inherits from. 
+
+```__bases__``` property holds the information about the immediate super class of the class. It is not aware of any other hierarchy. Also, it contains the super classes in a tuple and NOT a list.
+
+<div style="page-break-after: always;"></div>
 
 Here's an example to illustrate how the ```__bases__``` attribute works:
 
@@ -240,6 +447,8 @@ if x < 0:
 
 
 <div style="page-break-after: always;"></div>
+
+--- 
 
 ## yield
 
@@ -378,51 +587,11 @@ chr(ord('A') + 1)
 
 
 
+
+
+
+
 <div style="page-break-after: always;"></div>
-
---- 
-# subclasses  # superclasses 
-
-- **subclass** is a class that inherits properties and methods from a superclass. The subclass can add new properties or methods or override the inherited ones. 
-- **superclass** is a class that is being inherited from. 
-
-For example:
-```python 
-class Animal:
-    def __init__(self, name, species):
-        self.name = name
-        self.species = species
-
-    def speak(self):
-        print("I am an animal")
-
-class Dog(Animal):
-    def __init__(self, name, breed):
-        super().__init__(name, species="Dog")
-        self.breed = breed
-
-    def speak(self):
-        print("Woof!")
-
-dog1 = Dog("Fido", "Labrador")
-print(dog1.name)      # Fido
-print(dog1.species)   # Dog
-print(dog1.breed)     # Labrador
-dog1.speak()          # Woof!
-
-# Superclass: Animal that has an __init__ method to initialize the name and species attributes and a speak method that prints "I am an animal".
-
-#  The subclass Dog inherits from the Animal class using the syntax class Dog(Animal):. 
-
-# It has its own __init__ method that calls the super().__init__ method to initialize the name attribute and set the species attribute to "Dog". It also has a breed attribute. The speak method is overridden to print "Woof!".
-
-# We then create an instance of Dog called dog1 with the name "Fido" and the breed "Labrador". We can access its attributes using the dot notation and call its methods. When we call dog1.speak(), it prints "Woof!" because the speak method was overridden in the Dog subclass.
-```
-
-
-
-
-
 
  
 ---
@@ -439,10 +608,13 @@ dog1.speak()          # Woof!
 
 
 
+<div style="page-break-after: always;"></div>
+
+--- 
+
 # IMPORT: 
 
-
-import modules using the **import** statement.
+Import modules using the **import** statement.
 
 ```python 
 # Having module named my_module.py that contains some functions and variables. 
@@ -475,6 +647,8 @@ print(result)
 # However, be careful not to use from too much, as it can make your code harder to read and maintain. 
 # Also, be aware that if you use from to import a function or variable, you won't be able to access any other functions or variables in that module without importing them separately.
 ``` 
+
+<div style="page-break-after: always;"></div>
 
 ***other explanation** 
 
@@ -514,172 +688,18 @@ But if you use from my_module import my_function, you can use the function direc
 
 
 
---- 
-
-# UNDERSCORES: 
-
-Underscores are used in Python to indicate various naming conventions and to give special meanings to certain variables and methods.
+ 
 
 
-1) **Single leading underscore:** 
-- This convention is used to indicate that a variable or method is intended to be used as a private member of a class or module. 
-- For example, ```_my_private_variable``` or ```_my_private_method()```. 
-- However, this is just a convention and doesn't actually prevent other code from accessing the variable or method.
-
-2) **Single trailing underscore:**
-- This convention is used to avoid naming conflicts with Python keywords or built-in functions. 
-- For example, ```class_``` or ```print_```.
-
-3) **Double leading underscore:**
-- This convention is used to implement *name mangling in Python*
-- Name mangling is a technique used to make a variable or method private by adding the class name to its name to avoid naming conflicts. 
--  For example, ```__my_private_variable``` will be converted to ```_classname__my_private_variable``` when accessed outside the class.
-- This makes it harder to accidentally modify or access the variable or method from outside the class. 
-
-4) **Double leading and trailing underscore** 
-- This convention is used for special methods or attributes in Python. 
-- These methods have a special meaning in Python and are used to implement specific behaviors in classes. 
-- For example, ```__init__()``` is a special method used to *initialize an instance* of a class, 
-- and ```__doc__``` is a special attribute used to access the documentation string of a class or function.
-
-5) **Single underscore**
-- This convention is used as a throwaway variable, indicating that the variable is not going to be used. 
-- For example, ```_, x = some_function()```, where the first value returned by some_function() is not needed.
--  the single underscore character (_) can also be used as a *variable name or as a placeholder for unused variables or values* for example: 
-```python 
-# the underscore is used as a placeholder variable. 
-for _ in range(10):
-    # do something
-# it is often used when you don't need the value of the current iteration in a loop. Since the underscore variable is not used within the loop body, 
-# it tells the reader that the value is not important and can be ignored.
-
-# in normal loop we iterate 10 times, and value of i is used for something: 
-for i in range(10):
-    print(i)
-   ...: 
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-
-# but once you place underscore i is not used: 
-for _ in range(10):
-    print(i)
-   ...: 
-9
-9
-9
-9
-9
-9
-9
-9
-9
-9
-
-```
-
-
-
-
---- 
-
-# __init__.py
-
-- key .py file is __init__.py
-- this file marks directory and lets python know that all .py scripts should be threated as a package of modules to import
-- so if we want to have more, multiple directories we need this file to be in every of them
-- example above where all files in same dir but what if we have subdirectories ?
-  - in each subdirectory we need __inint__ file
-
-Python defines two types of packages, regular packages and namespace packages.
-
-Regular packages are traditional packages as they existed in Python 3.2 and earlier.
-A regular package is typically implemented as a directory containing an __init__.py file.
-
-When a regular package is imported, this __init__.py file is implicitly executed, and the objects it defines are bound to names in the package’s namespace.
-
-The __init__.py file can contain the same Python code that any other module can contain, and Python will add some additional attributes to the module when it is imported.
-
-![](./pngs/modules01.png)
-
-- same like directory structure in linux:   
-  - ```directory/file BUT here MODULE.PACKAGE```
-
-![](./pngs/modules02.png)
-
-
----
-
-# __name__ __main__
-
-- sometimes when you import from module you would like to know wheter a module function is being used as import
-- or if you are using the oryginal .py file of that module
-- ```if __name__ == __main__``` is usualy at the end of larger script files
-  - it is a check if we are running the script
-  - it means you run the file, the file that has not been imported
-  - if __name__ == "__main__" means we runnign whole script, if python can find the name of the file lol
-
-![](./pngs/modules03.png)
-
-
-In Python, __main__ is the name of the default module that is executed when a Python script is run from the command line. It is also the name of the top-level script environment that Python creates when a module is run as the main program.
-
-When a Python script is run, the interpreter first initializes the environment and sets up some special variables, including __name__. If the script is being run as the main program, __name__ is set to the string "__main__". If the script is being imported as a module into another script, __name__ is set to the name of the module.
-
-This distinction is useful for writing scripts that can be used both as stand-alone programs and as modules in larger programs. By checking the value of __name__, a script can determine whether it is being run as the main program or imported as a module, and can take different actions in each case.
-
-For example, a script might define a function or class that can be imported and used by other scripts, but also include some code at the bottom of the script that runs a test of the function or class if the script is being run as the main program. In this case, the test code would be enclosed in an if __name__ == "__main__": block, so that it is only executed if the script is being run directly and not when it is imported as a module.
-
-
-
-In the case of __init__(self), the double underscores are used to indicate that the method is a special method in Python. Specifically, __init__() is a special method used to initialize an instance of a class. By convention, all special methods in Python are surrounded by double underscores.
-
-However, note that the double underscore method name mangling mentioned earlier for example: 
-
-```python 
-__my_private_variable 
-# is different from the use of double underscores to indicate special methods (e.g., __init__). 
-
-# In the case of method name mangling, the double underscores are used to modify the name of a variable or method to avoid naming conflicts, while in the case of special methods, they are used to indicate the intended purpose of the method.
-```
-
-
-
----
-
-# __pycache__
-
-A cache is something that keeps a copy of stuff in case you need it again, to save you having to go back to the original  
-
-When you run a program in Python, the interpreter compiles it to bytecode first (this is an oversimplification) and stores it in the __pycache__ folder.
-
-If you look in there you will find a bunch of files sharing the names of the .py files in your project's folder, only their extensions will be either .pyc or .pyo. These are bytecode-compiled and optimized bytecode-compiled versions of your program's files, respectively.
-
-As a programmer, you can largely just ignore it... All it does is make your program start a little faster. When your scripts change, they will be recompiled, and if you delete the files or the whole folder and run your program again, they will reappear (unless you specifically suppress that behavior).
-
----
-
-
-
-
-
-
----
-
-
+<div style="page-break-after: always;"></div>
 
 
 ---
 # errors | error handling
 
 AttributeError can be defined as an error that is raised when an attribute reference or assignment fails.
+
+One handy way of deciding between value error and type error is by understanding that value error occurs when there is a problem with the content of the object you tried to assign the value to for example the statement int("a") produces a ValueError because the value being provided to int is of the wrong type (Don't associate with TypeError). 
 
 One handy way of deciding between value error and type error is by understanding that
 value error occurs when there is a problem with the content of the object you tried to assign the value to
@@ -877,8 +897,7 @@ In [23]: my_taxes = my_income * tax_rate
 In [24]: my_taxes
 Out[24]: 40.0
 ```
-
-
+ 
 
 
 
@@ -1549,6 +1568,50 @@ Option D is the correct syntax for defining a two-parameter lambda function that
   print(x(5))
   ```
 
+
+
+**lambda example walk through**
+
+```python 
+def foo(x,y):
+  return (y(x) + y(x+1))
+
+print(foo(1, lambda x: x*x))
+
+The function foo takes two arguments, x and y. x is just a regular variable, while y is a function that takes one argument.
+
+In the body of the function, y(x) is the first function call. This calls the function y with x as its argument. In the example code, y is a lambda function that squares its argument, so y(x) computes the square of x.
+
+The second function call is y(x+1). This calls the same y function, but with x+1 as its argument. In the example code, this computes the square of x+1.
+
+Finally, the two results from the function calls are added together, and the sum is returned by foo.
+
+In the example code, foo(1, lambda x: x*x) is called. This passes 1 as the value of x and a lambda function that squares its argument as the value of y. Therefore, y(x) evaluates to 1 squared, which is 1, and y(x+1) evaluates to 2 squared, which is 4. The sum of these two values is 5, which is the value returned by foo.
+
+So, the output of the code when run is 5.
+```
+
+
+**lambda example walk through 2**
+
+```python 
+def foo(x,y):
+  return y(x) +(x+1)
+print(foo(1,lambda x: x*x)
+
+The function foo takes two arguments, x and y. x is just a regular variable, while y is a function that takes one argument.
+
+In the body of the function, y(x) is the first function call. This calls the function y with x as its argument. In the example code, y is a lambda function that squares its argument, so y(x) computes the square of x.
+
+Then, (x+1) is added to the result of y(x). In the example code, x is 1, so (x+1) evaluates to 2. Therefore, the final result of foo is the sum of y(x) and (x+1).
+
+In the example code, foo(1,lambda x: x*x) is called. This passes 1 as the value of x and a lambda function that squares its argument as the value of y. Therefore, y(x) evaluates to 1 squared, which is 1. Adding (x+1), which is 2, we get the result 3, which is the value returned by foo.
+
+So, the output of the code when run is 3.
+```
+
+
+--- 
 
 
 ## WHILE LOOPS
@@ -2356,6 +2419,8 @@ p2.say_hello()  # prints "Hello, my name is Bob and I'm 25 years old."
 ```
 
 
+<div style="page-break-after: always;"></div>
+
 # class hierarchy 
 
 ```python 
@@ -2398,6 +2463,10 @@ class Class_2(A,B):
 
 
 
+
+
+<div style="page-break-after: always;"></div>
+
 --- 
 
 
@@ -2410,28 +2479,49 @@ class y(x):
 pass
 class z(y):
 pass 
+# Those lines of code define three Python classes x, y, and z. 
+# The x class has no attributes or methods, and the y and z classes inherit from x.
+
+# Now lets create two objects, one of type z and one of type x.
 x=z()
 z=z()
+# The first line creates an object of type z and assigns it to the variable x. 
+# The second line creates another object of type z and assigns it to the variable z
+
 isinstance(x,z) isinstance(z,x)
-
-# The first three lines of code define three Python classes x, y, and z. The x class has no attributes or methods, and the y and z classes inherit from x.
-
-# The last two lines of code create two objects, one of type z and one of type x.
-
-# The first line creates an object of type z and assigns it to the variable x. The second line creates another object of type z and assigns it to the variable z.
-
 # The first isinstance() call checks whether the object x is an instance of the z class. Since x was created as an instance of the z class, this call will return True.
 
 # The second isinstance() call checks whether the object z is an instance of the x class. However, the object z was created as an instance of the z class, not the x class. Therefore, this call will return False.
 
 # isinstance(x, z) # True
-# isinstance(z, x) # False
+# isinstance(z, z) # False
+```
+
+- remember this rule that whenever there are more than 2 classes from which a class is inheriting from and both classes contain a function/variable with same name then the class name on the left is given priority and its functions/variables are called
+
+```python
+class A:
+    def func(self):
+        return "A"
+ 
+class B:
+    def func(self):
+        return "B"
+ 
+class C(B,A):
+    pass
+ 
+c = C().func()
+print(c)
+
+out: B 
 ```
 
 
 
---- 
+<div style="page-break-after: always;"></div>
 
+--- 
 
 ## __dict __  in class
 
@@ -2454,17 +2544,123 @@ mappingproxy({'__module__': '__main__',
 
 
 
-# subclasses 
+
+
+<div style="page-break-after: always;"></div>
+
+--- 
+
+# subclasses  # superclasses 
+
+- **subclass** is a class that inherits properties and methods from a superclass. The subclass can add new properties or methods or override the inherited ones. 
+- **superclass** is a class that is being inherited from. 
+
+For example:
+```python 
+class Animal:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+
+    def speak(self):
+        print("I am an animal")
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name, species="Dog")
+        self.breed = breed
+
+    def speak(self):
+        print("Woof!")
+
+dog1 = Dog("Fido", "Labrador")
+print(dog1.name)      # Fido
+print(dog1.species)   # Dog
+print(dog1.breed)     # Labrador
+dog1.speak()          # Woof!
+
+# Superclass: Animal that has an __init__ method to initialize the name and species attributes and a speak method that prints "I am an animal".
+
+#  The subclass Dog inherits from the Animal class using the syntax class Dog(Animal):. 
+
+# It has its own __init__ method that calls the super().__init__ method to initialize the name attribute and set the species attribute to "Dog". It also has a breed attribute. The speak method is overridden to print "Woof!".
+
+# We then create an instance of Dog called dog1 with the name "Fido" and the breed "Labrador". We can access its attributes using the dot notation and call its methods. When we call dog1.speak(), it prints "Woof!" because the speak method was overridden in the Dog subclass.
+```
 
 
 
 
+
+<div style="page-break-after: always;"></div>
 
 --- 
 
 # isinstance 
 
+- instance is individual object from certaing class, 
+- if a class is a sublcass of another class than an instance of the sublcass is considered an instance of the superclass as well 
+- so if we have two classes A & B and B is subclass of A object created from B will be instance of A as well:
+```python 
+class A:
+     VarA = 1
+     def __init__(self) -> None:
+         self.prop_a=1
+
+class B(A):
+     VarA = 2
+     def __init__(self) -> None:
+         self.prop_b=2
  
+obj_a = A()
+obj_aa = A()
+obj_b=B()
+obj_bb=B()
+ 
+print(isinstance(obj_b,A))
+print(A.VarA==1)
+print(obj_a is obj_aa)
+ 
+True
+True
+False
+``` 
+
+<div style="page-break-after: always;"></div>
+
+- but if we change to not be subclass of A, than isinstance(obj_b,A) will return false:
+
+```python 
+#
+# but if we change to not be subclass of A, than isinstance(obj_b,A) will return false:
+# 
+class A:
+     VarA = 1
+     def __init__(self) -> None:
+         self.prop_a=1
+ 
+class B():
+     VarA = 2
+     def __init__(self) -> None:
+         self.prop_b=2
+ 
+obj_a = A()
+obj_aa = A()
+obj_b=B()
+obj_bb=B()
+ 
+print(isinstance(obj_b,A))
+print(A.VarA==1)
+print(obj_a is obj_aa)
+...: 
+False
+True
+False
+```
+
+
+<div style="page-break-after: always;"></div>
+
 
 ```python 
 #
@@ -2501,7 +2697,22 @@ So super().__init__() simply means to call the constructor of the superclass and
 
 --- 
 
+
+
 # CLASS CONSTRUCTORS: 
+
+
+A constructor is a special method that is called when an object of a class is created.
+In Python, the constructor method is named __init__.
+The constructor method always takes self as its first parameter. self refers to the instance of the class being created.
+The constructor can take additional parameters, which can be used to set the initial state of the instance.
+The __init__ method is called automatically when an object of the class is created using the class name followed by parentheses, like this: my_object = MyClass().
+The __init__ method can also be used to perform any initialization that is required for the class.
+If a class does not have a constructor defined, Python will use a default constructor that does nothing.
+A class can have more than one constructor defined by using class methods as alternative constructors. These methods are often called "factory" methods.
+Constructors can also be used to perform validation or raise exceptions if invalid arguments are passed to the constructor.
+Constructors can be overridden in subclass to add additional functionality or override parent class' behavior.
+
 
 class constructor is a special method that is used to initialize the object's attributes when the object is created. The constructor method is called automatically when an object is instantiated, and it can take parameters to set the initial state of the object.
 
@@ -2540,11 +2751,15 @@ print(person1.age)
 
 
 
+<div style="page-break-after: always;"></div>
+
+# class variable vs instance variable
 
 
+A **class variable** is a variable that is defined within a class but outside of any methods, and its value is shared by all instances of the class. Therefore, you can access it using the Class name, as in Class.variable.
 
+On the other hand, an **instance variable** is a variable that is defined within an instance method or the ```__init__``` method, and its value is unique to each instance of the class. Therefore, you need to create an instance of the class first, as in instance = Class(), and then access the instance variable using the dot notation, as in ```instance.value```.
  
-
 ```python 
 class Class:
   variable = 0            # class variable 
@@ -2571,7 +2786,7 @@ object2.value += 1        # object2's value is now 1 because we incremented it u
 
 
 
----
+
 
 
 
@@ -2580,6 +2795,7 @@ object2.value += 1        # object2's value is now 1 because we incremented it u
 
 <div style="page-break-after: always;"></div>
 
+---
 
 # DECORATORS
 
@@ -2718,6 +2934,23 @@ dta = open('location_of_my_csv',encoding='utf-8')
 csv_data = csv.reader(data)
 data_lines = list(csv_data)
 
+```
+
+# files readline()
+
+readline() method returns ONE line from the file 
+
+if you specify byte size, it will read bytes from flile 
+
+```python 
+# having abc.txt file: 
+abc
+def
+ghi
+# and reading the file with readline(3) will read three bytes
+file = open('abc.txt')
+print(file.readline(3))
+out: abc
 ```
 
 
